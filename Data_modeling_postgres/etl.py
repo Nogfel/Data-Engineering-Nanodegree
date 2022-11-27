@@ -11,6 +11,10 @@ def process_song_file(cur, filepath):
     necessary to populate the `song` and `artist tables` are selected and 
     stored in separated lists that are inserted in its respective
     tables.
+
+    INPUTS:
+    * cur the cursor variable
+    * filepath the file path to the song file
     '''
     # open song file
     df = pd.read_json(filepath, lines=True)
@@ -35,6 +39,10 @@ def process_log_file(cur, filepath):
     table are collected and inserted in the `songplays` table also using 
     data from the `song_select` query stored in the `sql_queries.py`
     file. 
+    
+    INPUTS:
+    * cur the cursor variable
+    * filepath the file path to the song file
     '''
     # open log file
     df = pd.read_json(filepath, lines=True)
@@ -92,6 +100,12 @@ def process_data(cur, conn, filepath, func):
     tables using the `process_log_file` and `process_song_file`
     functions. After the data is processed, information is printed
     on the screen providing a log information for the process.
+    
+    INPUTS:
+    * cur the cursor variable
+    * conn the connection to database variable
+    * filepath  the file path to the directory variable
+    * func the function to process the data variable
     '''
     # get all files matching extension from directory
     all_files = []
