@@ -14,12 +14,14 @@ DWH_DB_PORT=int(config.get('CLUSTER', 'DB_PORT'))
 
 
 def drop_tables(cur, conn):
+    '''Drop tables in case they exist'''
     for query in drop_table_queries:
         cur.execute(query)
         conn.commit()
 
 
 def create_tables(cur, conn):
+    '''Create tables in the database'''
     for query in create_table_queries:
         cur.execute(query)
         conn.commit()

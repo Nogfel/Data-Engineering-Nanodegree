@@ -13,12 +13,14 @@ DB_PASSWDWH_ORD=config.get('CLUSTER', 'DB_PASSWORD')
 DWH_DB_PORT=int(config.get('CLUSTER', 'DB_PORT'))
 
 def load_staging_tables(cur, conn):
+    '''Execute the queries related to load data into the staging tables'''
     for query in copy_table_queries:
         cur.execute(query)
         conn.commit()
 
 
 def insert_tables(cur, conn):
+    '''Execute the queries related to load data into tables used for analysis puposes'''
     for query in insert_table_queries:
         cur.execute(query)
         conn.commit()

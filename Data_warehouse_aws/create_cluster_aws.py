@@ -19,7 +19,8 @@ NUM_NODES = config.get('CLUSTER', 'NUM_NODES')
 
 
 def create_aws_resources():
-
+    '''Creates the ec2, s3, iam and redshift instances necessary to
+    complete the project'''
     import boto3
     ec2 = boto3.resource('ec2',
                         region_name="us-west-2",
@@ -48,6 +49,7 @@ def create_aws_resources():
 
 
 def create_iam_role(iam):
+    '''Create the IAM role and attach role policy to perform the tasks'''
     from botocore.exceptions import ClientError
 
     try:
@@ -73,6 +75,7 @@ def create_iam_role(iam):
     return roleArn
 
 def create_cluster(redshift, roleArn):
+    '''Creates the Redshift cluster in the AWS cloud'''
     import time
     try:
         redshift.create_cluster(
@@ -108,6 +111,8 @@ def create_cluster(redshift, roleArn):
     return END_POINT, IAM_ROLE_ARN, VPC_ID
 
 def open_tcp_port(VPC_ID, ec2):
+    '''Make the adjustments in the VPC so the security group 
+    can make changes in the cluster from anywhere in the globe'''
     try:
         vpc = ec2.Vpc(id=VPC_ID)
         print("list_security_group: ,", list(vpc.security_groups.all()))
@@ -132,6 +137,7 @@ def delete_cluster(redshift):
 
 
 def delete_role(iam):
+    '''Detach the role policy and delete the IAM role'''
     iam.detach_role_policy(RoleName=IAM_ROLE_NAME, PolicyArn=IAM_ROLE_ARN)
     iam.delete_role(RoleName=IAM_ROLE_NAME)
     print('Role and Role Arn deleted')
