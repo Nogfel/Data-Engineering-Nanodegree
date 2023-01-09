@@ -24,7 +24,7 @@ staging_events_table_create= ("""CREATE TABLE staging_events (
     auth VARCHAR,
     firstName VARCHAR,
     gender VARCHAR,
-    itemInSession VARCHAR,
+    itemInSession SMALLINT,
     lastName VARCHAR,
     length FLOAT,
     level VARCHAR,
@@ -44,8 +44,8 @@ staging_events_table_create= ("""CREATE TABLE staging_events (
 staging_songs_table_create = ("""CREATE TABLE staging_songs (
     num_songs INTEGER,
     artist_id VARCHAR,
-    artist_latitude VARCHAR,
-    artist_longitude VARCHAR,
+    artist_latitude DECIMAL,
+    artist_longitude DECIMAL,
     artist_location VARCHAR,
     artist_name VARCHAR,
     song_id VARCHAR,
@@ -69,7 +69,7 @@ songplay_table_create = ("""CREATE TABLE songplay (
 """)
 
 user_table_create = ("""CREATE TABLE users (
-    user_id VARCHAR NOT NULL PRIMARY KEY SORTKEY,
+    user_id VARCHAR PRIMARY KEY SORTKEY,
     first_name VARCHAR,
     last_name VARCHAR,
     gender VARCHAR,
@@ -78,7 +78,7 @@ user_table_create = ("""CREATE TABLE users (
 """)
 
 song_table_create = ("""CREATE TABLE songs(
-    song_id VARCHAR(18) NOT NULL PRIMARY KEY,
+    song_id VARCHAR(18) PRIMARY KEY,
     title VARCHAR,
     artist_id VARCHAR,
     year INTEGER,
@@ -87,16 +87,16 @@ song_table_create = ("""CREATE TABLE songs(
 """)
 
 artist_table_create = ("""CREATE TABLE artists(
-    artist_id VARCHAR(18) NOT NULL PRIMARY KEY,
+    artist_id VARCHAR(18) PRIMARY KEY,
     name VARCHAR NOT NULL,
     location VARCHAR,
-    lattitude VARCHAR,
-    longitude VARCHAR
+    lattitude DECIMAL,
+    longitude DECIMAL
 )
 """)
 
 time_table_create = ("""CREATE TABLE time(
-    start_time TIMESTAMP NOT NULL PRIMARY KEY,
+    start_time TIMESTAMP PRIMARY KEY,
     hour INTEGER NOT NULL,
     day INTEGER NOT NULL,
     week INTEGER NOT NULL,
@@ -143,14 +143,26 @@ WHERE ev.page = 'NextSong'
 """)
 
 user_table_insert = ("""
-INSERT INTO users (user_id, first_name, last_name, gender, level)
-SELECT DISTINCT
-    userId, 
+INSERT INTO users(user_id, first_name, last_name, gender, level)
+WITH uniq_staging_events AS (
+    SELECT 
+        userid, 
+        firstName,
+        lastName,
+        gender,
+        level,
+        ROW_NUMBER() OVER(PARTITION BY userid ORDER BY ts DESC) AS rank
+    FROM staging_events
+            WHERE userid IS NOT NULL
+)
+SELECT 
+    userid,
     firstName AS first_name, 
     lastName AS last_name, 
     gender, 
-    level
-FROM staging_events
+    level    
+    FROM uniq_staging_events
+WHERE rank = 1;
 """)
 
 song_table_insert = ("""
@@ -188,7 +200,7 @@ SELECT DISTINCT
 FROM songplay
 """)
 
-# TESTING
+# ANALYSIS
 qty_users_by_gender = '''
 SELECT 
     gender,
@@ -197,10 +209,19 @@ FROM users
 GROUP BY 1;
 '''
 
+duplicate_users = '''
+SELECT 
+    user_id, 
+    COUNT(*) as count 
+FROM users 
+GROUP BY user_id 
+ORDER BY count DESC LIMIT 10;
+'''
+
 # QUERY LISTS
 
 create_table_queries = [staging_events_table_create, staging_songs_table_create, songplay_table_create, user_table_create, song_table_create, artist_table_create, time_table_create]
 drop_table_queries = [staging_events_table_drop, staging_songs_table_drop, songplay_table_drop, user_table_drop, song_table_drop, artist_table_drop, time_table_drop]
 copy_table_queries = [staging_events_copy, staging_songs_copy]
 insert_table_queries = [songplay_table_insert, user_table_insert, song_table_insert, artist_table_insert, time_table_insert]
-analytical_queries = [qty_users_by_gender]
+analytical_queries = [qty_users_by_gender, duplicate_users]
