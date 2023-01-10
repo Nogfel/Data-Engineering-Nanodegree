@@ -15,6 +15,7 @@ DWH_DB_PORT=int(config.get('CLUSTER', 'DB_PORT'))
 
 
 def analysis(cur, conn):
+    '''Executes the analytical queries'''
     for query in analytical_queries:
         cur.execute(query)
         data = cur.fetchall()

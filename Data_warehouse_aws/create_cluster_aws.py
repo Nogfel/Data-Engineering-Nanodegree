@@ -130,6 +130,7 @@ def open_tcp_port(VPC_ID, ec2):
 
 
 def delete_cluster(redshift):
+    '''The the redshift cluster'''
     try:
         redshift.delete_cluster( ClusterIdentifier=CLUSTER_IDENTIFIER,  SkipFinalClusterSnapshot=True)
     except Exception as e:
