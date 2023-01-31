@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Fri Jan 27 15:19:45 BRT 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0185-f474-f93e-00000301d530 
+on database directory /home/felipe/Documentos/Udacity/Data Engineering Nanodegree/Data_lake_project/metastore_db with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@7aec35a 
+Loaded from file:/home/felipe/Documentos/pyspark/spark-3.3.0-bin-hadoop3/jars/derby-10.14.2.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=11.0.16+11-LTS-199
+user.dir=/home/felipe/Documentos/Udacity/Data Engineering Nanodegree/Data_lake_project
+os.name=Linux
+os.arch=amd64
+os.version=5.15.0-58-generic
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
