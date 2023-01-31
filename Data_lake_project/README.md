@@ -25,7 +25,7 @@ https://knowledge.udacity.com/questions/488328
 # My Experience With Project
 Before I started the Data Engineering Nanodegree I read the book **Learning Spark - Lightning-Fast Data Analytics** from Jules S. Damji, Brooke Wenig, Tathagata Das & Denny Lee.
 
-![Book Cover](/learning_spark.jpg)
+![Book Cover](https://m.media-amazon.com/images/I/51hh4ltGnnL._SX379_BO1,204,203,200_.jpg)
 
 So, I already had pyspark installed on my machine. But since they recommend using Databricks for completing the examples I had to look for an alternative for running the code on Jupyter Notebooks. The article **How To Use Jupyter Notebooks with Apache Spark** writen by Shanika Wickramasinghe available in [this link](https://www.bmc.com/blogs/jupyter-notebooks-apache-spark/) was used to make it possible.<br>
 
