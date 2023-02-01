@@ -1,20 +1,18 @@
 # Data Lake Project
-This is still a work in progress meant for collecting feedback of the work done so far. The sections **Create the EMR Cluster with CLI** and **Usefull Resources** may be or not in the final version of this project, they were inserted as mere references.
+This project consist of reading data from `.json` files into a Spark application, performs some transformations and exporting the output tables as parquet format. 
 
-## Create the EMR Cluster with CLI
-The code necessary to do this is:
-```
-aws emr create-cluster --applications Name=Ganglia Name=Spark Name=Zeppelin --ebs-root-volume-size 10 --ec2-attributes '{"KeyName":"spark-cluster","InstanceProfile":"EMR_EC2_DefaultRole","SubnetId":"subnet-0302ed08fe4d595c5","EmrManagedSlaveSecurityGroup":"sg-00707ce63e11173b4","EmrManagedMasterSecurityGroup":"sg-0922f9752dd20c5f7"}' --service-role EMR_DefaultRole --enable-debugging --release-label emr-5.20.0 --log-uri 's3n://aws-logs-221451026207-us-east-1/elasticmapreduce/' --name 'spark-cluster' --instance-groups '[{"InstanceCount":2,"EbsConfiguration":{"EbsBlockDeviceConfigs":[{"VolumeSpecification":{"SizeInGB":32,"VolumeType":"gp2"},"VolumesPerInstance":1}]},"InstanceGroupType":"CORE","InstanceType":"m5.xlarge","Name":"Core Instance Group"},{"InstanceCount":1,"EbsConfiguration":{"EbsBlockDeviceConfigs":[{"VolumeSpecification":{"SizeInGB":32,"VolumeType":"gp2"},"VolumesPerInstance":1}]},"InstanceGroupType":"MASTER","InstanceType":"m5.xlarge","Name":"Master Instance Group"}]' --scale-down-behavior TERMINATE_AT_TASK_COMPLETION --region us-east-1
-```
+## File Structure
+**`data`:** These folders contain another two folders inside which stores the .json files from log data (log-data) and songs data (song-data). <br>
 
-## Usefull Resources
-This link possess lot of information on how to perform the EMR creation with boto3.
-https://github.com/jaycode/short_sale_volume/blob/master/1.emrspark_lib.ipynb
+**`metastore_db`:** A Hive metastore warehouse (aka spark-warehouse) is the directory where Spark SQL persists tables whereas a Hive metastore (aka metastore_db) is a relational database to manage the metadata of the persistent relational entities, e.g. databases, tables, columns, partitions. For more information about it see [this link](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-hive-metastore.html). Since the data wrangling was performed in SparkSQL this repository was automatically generated.<br>
 
-Another important issue related to this project is how long does it take to read all data to S3 bucket _(which is a lot)_. So, when starting to read it, we can just performe everything by reading just a subset of the data. We can do this with the help of the page below:
-https://knowledge.udacity.com/questions/488328
+**`data-lake-etl-process.ipynb`:** This notebook was used to perform the exploration and experiences necessary to write the `etl.py` script. In the "My Experiences With This Project" section more information is provided about some configurations performed in order to run Spark on the notebook.<br>
 
-## My Experience With Project
+**`derby.log`:** File created due to the execution of the spark-shell. It records informations related to the execution of the spark-shell.
+
+**`etl.py`:** This contains the functions and imports necessary to execute the whole ETL process.
+
+## My Experience With This Project
 Before I started the Data Engineering Nanodegree I read the book **Learning Spark - Lightning-Fast Data Analytics** from Jules S. Damji, Brooke Wenig, Tathagata Das & Denny Lee.
 
 ![Book Cover](https://m.media-amazon.com/images/I/51hh4ltGnnL._SX379_BO1,204,203,200_.jpg)
