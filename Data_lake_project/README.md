@@ -31,4 +31,4 @@ So, I already had pyspark installed on my machine. But since they recommend usin
 
 Since could run everything on my machine I prefered to run code locally and create all the parquet files and just when everything was Ok to go to the cloud. 
 
-In order to this first I have to type `pyspark` on the terminal and access the link that it provides so I can use the pyspark.
+In order to this first I have to type `pyspark` on the terminal and access the link that it provides so I can use the pyspark. One important point is that the covers Spark 3.0 and the Udacity's Data Engineering Nanodegree a version of Spark 2. So some codes writen here might break when using Spark 2.
