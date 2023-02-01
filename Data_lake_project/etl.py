@@ -23,20 +23,30 @@ def create_spark_session():
 
 def process_song_data(spark, input_data, output_data):
     # get filepath to song data file
-    song_data = input_data + 'song_data/A/*/*/*.json'
+    song_data = input_data + 'song_data/*/*/*/*.json'
     
     # read song data file
     df = spark.read.json(song_data)
 
     # extract columns to create songs table
     songs_table = spark.sql("""
-    SELECT DISTINCT
-        CAST(song_id AS STRING) AS song_id, 
-        CAST(title AS STRING) AS title, 
-        CAST(artist_id AS STRING) AS artist_id, 
-        CAST(year AS INT) AS year, 
-        CAST(duration AS FLOAT) AS duration
-    FROM staging_songs
+    WITH songs_duplicate AS (
+        SELECT
+            CAST(song_id AS STRING) AS song_id, 
+            CAST(title AS STRING) AS title, 
+            CAST(artist_id AS STRING) AS artist_id, 
+            CAST(year AS INT) AS year, 
+            CAST(duration AS FLOAT) AS duration,
+            ROW_NUMBER() OVER(PARTITION BY song_id ORDER BY song_id DESC) AS rank
+        FROM staging_songs)
+    SELECT
+        song_id,
+        title,
+        artist_id,
+        year,
+        duration
+    FROM songs_duplicate
+    WHERE rank = 1
     """)
     
     # write songs table to parquet files partitioned by year and artist
