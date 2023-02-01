@@ -54,13 +54,24 @@ def process_song_data(spark, input_data, output_data):
 
     # extract columns to create artists table
     artists_table = spark.sql("""
+    WITH artists_duplicates AS (
     SELECT
         CAST(artist_id AS STRING) AS artist_id, 
         CAST(artist_name AS STRING) AS name, 
         CAST(artist_location AS STRING) AS location, 
         CAST(artist_latitude AS FLOAT) AS lattitude, 
-        CAST(artist_longitude AS FLOAT) AS longitude
+        CAST(artist_longitude AS FLOAT) AS longitude,
+        ROW_NUMBER() OVER(PARTITION BY artist_id ORDER BY artist_id DESC) AS rank
     FROM staging_songs
+    )
+    SELECT
+        artist_id,
+        name,
+        location,
+        lattitude,
+        longitude
+    FROM artists_duplicates
+    WHERE rank = 1
     """)
     
     # write artists table to parquet files
