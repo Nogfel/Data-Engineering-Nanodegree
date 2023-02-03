@@ -196,10 +196,10 @@ def process_log_data(spark, input_data, output_data):
 
 def main():
     spark = create_spark_session()
-    # input_data = "s3a://udacity-dend/"
-    input_data = "/home/felipe/Documentos/Udacity/Data Engineering Nanodegree/Data_lake_project/data/"
-    # output_data = "s3a://sparkyfy-lake/"
-    output_data = "/home/felipe/Documentos/Udacity/Data Engineering Nanodegree/Data_lake_project/lake/"
+    input_data = "s3a://udacity-dend-nog/"
+    # input_data = "/home/felipe/Documentos/Udacity/Data Engineering Nanodegree/Data_lake_project/data/"
+    output_data = "s3a://sparkyfy-lake-nog/"
+    # output_data = "/home/felipe/Documentos/Udacity/Data Engineering Nanodegree/Data_lake_project/lake/"
     
     process_song_data(spark, input_data, output_data)    
     process_log_data(spark, input_data, output_data)
