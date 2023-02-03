@@ -1,5 +1,5 @@
 # Data Lake Project
-This project consist of reading data from `.json` files into a Spark application, performs some transformations and exporting the output tables as parquet format. 
+This project consist of reading data from `.json` files into a Spark application, performing some transformations and exporting the output tables as parquet format. An important observation about this project is that even though the Udacity's Data Engineering Nanodegree program presents Spark 2, **this project was writen in Spark 3**.
 
 ## File Structure
 **`data`:** These folders contain another two folders inside which stores the .json files from log data (log-data) and songs data (song-data). <br>
