@@ -1,0 +1,848 @@
+Bloom filter expected number of distinct values are: null
+Page row count limit to 20000
+Writing page checksums is: on
+23/02/03 07:52:04 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "first_name",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "last_name",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "gender",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "level",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  optional binary first_name (STRING);
+  optional binary last_name (STRING);
+  optional binary gender (STRING);
+  optional binary level (STRING);
+}
+
+       
+23/02/03 07:52:04 INFO CodecConfig: Compression: SNAPPY
+23/02/03 07:52:04 INFO CodecConfig: Compression: SNAPPY
+23/02/03 07:52:04 INFO ParquetOutputFormat: Parquet block size to 134217728
+23/02/03 07:52:04 INFO ParquetOutputFormat: Validation is off
+23/02/03 07:52:04 INFO ParquetOutputFormat: Maximum row group padding size is 8388608 bytes
+23/02/03 07:52:04 INFO ParquetOutputFormat: Parquet properties are:
+Parquet page size to 1048576
+Parquet dictionary page size to 1048576
+Dictionary is true
+Writer version is: PARQUET_1_0
+Page size checking is: estimated
+Min row count for page size check is: 100
+Max row count for page size check is: 10000
+Truncate length for column indexes is: 64
+Truncate length for statistics min/max  is: 2147483647
+Bloom filter enabled: false
+Max Bloom filter size for a column is 1048576
+Bloom filter expected number of distinct values are: null
+Page row count limit to 20000
+Writing page checksums is: on
+23/02/03 07:52:04 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "first_name",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "last_name",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "gender",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "level",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  optional binary first_name (STRING);
+  optional binary last_name (STRING);
+  optional binary gender (STRING);
+  optional binary level (STRING);
+}
+
+       
+23/02/03 07:52:04 INFO CodecConfig: Compression: SNAPPY
+23/02/03 07:52:04 INFO CodecConfig: Compression: SNAPPY
+23/02/03 07:52:04 INFO ParquetOutputFormat: Parquet block size to 134217728
+23/02/03 07:52:04 INFO ParquetOutputFormat: Validation is off
+23/02/03 07:52:04 INFO ParquetOutputFormat: Maximum row group padding size is 8388608 bytes
+23/02/03 07:52:04 INFO ParquetOutputFormat: Parquet properties are:
+Parquet page size to 1048576
+Parquet dictionary page size to 1048576
+Dictionary is true
+Writer version is: PARQUET_1_0
+Page size checking is: estimated
+Min row count for page size check is: 100
+Max row count for page size check is: 10000
+Truncate length for column indexes is: 64
+Truncate length for statistics min/max  is: 2147483647
+Bloom filter enabled: false
+Max Bloom filter size for a column is 1048576
+Bloom filter expected number of distinct values are: null
+Page row count limit to 20000
+Writing page checksums is: on
+23/02/03 07:52:04 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "first_name",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "last_name",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "gender",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "level",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  optional binary first_name (STRING);
+  optional binary last_name (STRING);
+  optional binary gender (STRING);
+  optional binary level (STRING);
+}
+
+       
+23/02/03 07:52:04 INFO FileOutputCommitter: Saved output of task 'attempt_202302030752007195914016639622766_0012_m_000000_164' to file:/home/felipe/Documentos/Udacity/Data Engineering Nanodegree/Data_lake_project/lake/user/_temporary/0/task_202302030752007195914016639622766_0012_m_000000
+23/02/03 07:52:04 INFO SparkHadoopMapRedUtil: attempt_202302030752007195914016639622766_0012_m_000000_164: Committed. Elapsed time: 1 ms.
+23/02/03 07:52:04 INFO Executor: Finished task 0.0 in stage 12.0 (TID 164). 9968 bytes result sent to driver
+23/02/03 07:52:04 INFO TaskSetManager: Finished task 0.0 in stage 12.0 (TID 164) in 3924 ms on 192.168.68.123 (executor driver) (1/1)
+23/02/03 07:52:04 INFO TaskSchedulerImpl: Removed TaskSet 12.0, whose tasks have all completed, from pool 
+23/02/03 07:52:04 INFO DAGScheduler: ResultStage 12 (parquet at NativeMethodAccessorImpl.java:0) finished in 3,974 s
+23/02/03 07:52:04 INFO DAGScheduler: Job 9 is finished. Cancelling potential speculative or zombie tasks for this job
+23/02/03 07:52:04 INFO TaskSchedulerImpl: Killing all running tasks in stage 12: Stage finished
+23/02/03 07:52:04 INFO DAGScheduler: Job 9 finished: parquet at NativeMethodAccessorImpl.java:0, took 4,004593 s
+23/02/03 07:52:04 INFO FileFormatWriter: Start to commit write Job b5009b55-803f-4d1e-a627-a85d167e7b63.
+23/02/03 07:52:04 INFO FileFormatWriter: Write Job b5009b55-803f-4d1e-a627-a85d167e7b63 committed. Elapsed time: 145 ms.
+23/02/03 07:52:04 INFO FileFormatWriter: Finished processing stats for write job b5009b55-803f-4d1e-a627-a85d167e7b63.
+23/02/03 07:52:04 INFO FileSourceStrategy: Pushed Filters: IsNotNull(page),EqualTo(page,NextSong)
+23/02/03 07:52:04 INFO FileSourceStrategy: Post-Scan Filters: isnotnull(page#92),(page#92 = NextSong)
+23/02/03 07:52:04 INFO FileSourceStrategy: Output Data Schema: struct<page: string, ts: bigint>
+23/02/03 07:52:04 INFO ParquetFileFormat: Using default output committer for Parquet: org.apache.parquet.hadoop.ParquetOutputCommitter
+23/02/03 07:52:04 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+23/02/03 07:52:04 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+23/02/03 07:52:04 INFO SQLHadoopMapReduceCommitProtocol: Using user defined output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+23/02/03 07:52:04 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+23/02/03 07:52:04 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+23/02/03 07:52:04 INFO SQLHadoopMapReduceCommitProtocol: Using output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+23/02/03 07:52:04 INFO HashAggregateExec: spark.sql.codegen.aggregate.map.twolevel.enabled is set to true, but current version of codegened fast hashmap does not support this aggregate.
+23/02/03 07:52:05 INFO CodeGenerator: Code generated in 49.790216 ms
+23/02/03 07:52:05 INFO MemoryStore: Block broadcast_15 stored as values in memory (estimated size 199.2 KiB, free 433.7 MiB)
+23/02/03 07:52:05 INFO MemoryStore: Block broadcast_15_piece0 stored as bytes in memory (estimated size 34.1 KiB, free 433.6 MiB)
+23/02/03 07:52:05 INFO BlockManagerInfo: Added broadcast_15_piece0 in memory on 192.168.68.123:34037 (size: 34.1 KiB, free: 434.2 MiB)
+23/02/03 07:52:05 INFO SparkContext: Created broadcast 15 from parquet at NativeMethodAccessorImpl.java:0
+23/02/03 07:52:05 INFO FileSourceScanExec: Planning scan with bin packing, max size: 32396179 bytes, open cost is considered as scanning 4194304 bytes.
+23/02/03 07:52:05 INFO DAGScheduler: Registering RDD 47 (parquet at NativeMethodAccessorImpl.java:0) as input to shuffle 3
+23/02/03 07:52:05 INFO DAGScheduler: Got map stage job 10 (parquet at NativeMethodAccessorImpl.java:0) with 4 output partitions
+23/02/03 07:52:05 INFO DAGScheduler: Final stage: ShuffleMapStage 13 (parquet at NativeMethodAccessorImpl.java:0)
+23/02/03 07:52:05 INFO DAGScheduler: Parents of final stage: List()
+23/02/03 07:52:05 INFO DAGScheduler: Missing parents: List()
+23/02/03 07:52:05 INFO DAGScheduler: Submitting ShuffleMapStage 13 (MapPartitionsRDD[47] at parquet at NativeMethodAccessorImpl.java:0), which has no missing parents
+23/02/03 07:52:05 INFO MemoryStore: Block broadcast_16 stored as values in memory (estimated size 34.0 KiB, free 433.6 MiB)
+23/02/03 07:52:05 INFO MemoryStore: Block broadcast_16_piece0 stored as bytes in memory (estimated size 16.4 KiB, free 433.6 MiB)
+23/02/03 07:52:05 INFO BlockManagerInfo: Added broadcast_16_piece0 in memory on 192.168.68.123:34037 (size: 16.4 KiB, free: 434.2 MiB)
+23/02/03 07:52:05 INFO SparkContext: Created broadcast 16 from broadcast at DAGScheduler.scala:1513
+23/02/03 07:52:05 INFO DAGScheduler: Submitting 4 missing tasks from ShuffleMapStage 13 (MapPartitionsRDD[47] at parquet at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0, 1, 2, 3))
+23/02/03 07:52:05 INFO TaskSchedulerImpl: Adding task set 13.0 with 4 tasks resource profile 0
+23/02/03 07:52:05 INFO TaskSetManager: Starting task 0.0 in stage 13.0 (TID 165) (192.168.68.123, executor driver, partition 0, PROCESS_LOCAL, 6182 bytes) taskResourceAssignments Map()
+23/02/03 07:52:05 INFO TaskSetManager: Starting task 1.0 in stage 13.0 (TID 166) (192.168.68.123, executor driver, partition 1, PROCESS_LOCAL, 6182 bytes) taskResourceAssignments Map()
+23/02/03 07:52:05 INFO TaskSetManager: Starting task 2.0 in stage 13.0 (TID 167) (192.168.68.123, executor driver, partition 2, PROCESS_LOCAL, 6182 bytes) taskResourceAssignments Map()
+23/02/03 07:52:05 INFO TaskSetManager: Starting task 3.0 in stage 13.0 (TID 168) (192.168.68.123, executor driver, partition 3, PROCESS_LOCAL, 5840 bytes) taskResourceAssignments Map()
+23/02/03 07:52:05 INFO Executor: Running task 1.0 in stage 13.0 (TID 166)
+23/02/03 07:52:05 INFO Executor: Running task 0.0 in stage 13.0 (TID 165)
+23/02/03 07:52:05 INFO Executor: Running task 2.0 in stage 13.0 (TID 167)
+23/02/03 07:52:05 INFO Executor: Running task 3.0 in stage 13.0 (TID 168)
+23/02/03 07:52:05 INFO CodeGenerator: Code generated in 23.184709 ms
+23/02/03 07:52:05 INFO CodeGenerator: Code generated in 15.261444 ms
+23/02/03 07:52:05 INFO CodeGenerator: Code generated in 17.689722 ms
+23/02/03 07:52:05 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-03-events.json, range: 0-54084, partition values: [empty row]
+23/02/03 07:52:05 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-15-events.json, range: 0-243143, partition values: [empty row]
+23/02/03 07:52:05 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-08-events.json, range: 0-102218, partition values: [empty row]
+23/02/03 07:52:05 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-20-events.json, range: 0-174991, partition values: [empty row]
+23/02/03 07:52:05 INFO CodeGenerator: Code generated in 21.438463 ms
+23/02/03 07:52:05 INFO CodeGenerator: Code generated in 56.868111 ms
+23/02/03 07:52:05 INFO BlockManagerInfo: Removed broadcast_14_piece0 on 192.168.68.123:34037 in memory (size: 89.9 KiB, free: 434.3 MiB)
+23/02/03 07:52:05 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-12-events.json, range: 0-99854, partition values: [empty row]
+23/02/03 07:52:05 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-22-events.json, range: 0-46181, partition values: [empty row]
+23/02/03 07:52:05 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-24-events.json, range: 0-170219, partition values: [empty row]
+23/02/03 07:52:05 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-10-events.json, range: 0-44076, partition values: [empty row]
+23/02/03 07:52:05 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-07-events.json, range: 0-97519, partition values: [empty row]
+23/02/03 07:52:05 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-21-events.json, range: 0-242588, partition values: [empty row]
+23/02/03 07:52:05 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-11-events.json, range: 0-43711, partition values: [empty row]
+23/02/03 07:52:05 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-04-events.json, range: 0-85671, partition values: [empty row]
+23/02/03 07:52:05 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-29-events.json, range: 0-168646, partition values: [empty row]
+23/02/03 07:52:05 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-25-events.json, range: 0-26214, partition values: [empty row]
+23/02/03 07:52:05 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-06-events.json, range: 0-85373, partition values: [empty row]
+23/02/03 07:52:05 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-01-events.json, range: 0-7151, partition values: [empty row]
+23/02/03 07:52:05 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-14-events.json, range: 0-217264, partition values: [empty row]
+23/02/03 07:52:05 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-02-events.json, range: 0-83585, partition values: [empty row]
+23/02/03 07:52:05 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-19-events.json, range: 0-150798, partition values: [empty row]
+23/02/03 07:52:05 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-28-events.json, range: 0-202910, partition values: [empty row]
+23/02/03 07:52:05 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-18-events.json, range: 0-75763, partition values: [empty row]
+23/02/03 07:52:05 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-27-events.json, range: 0-141625, partition values: [empty row]
+23/02/03 07:52:05 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-17-events.json, range: 0-66164, partition values: [empty row]
+23/02/03 07:52:05 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-23-events.json, range: 0-138647, partition values: [empty row]
+23/02/03 07:52:05 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-05-events.json, range: 0-189295, partition values: [empty row]
+23/02/03 07:52:05 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-09-events.json, range: 0-134804, partition values: [empty row]
+23/02/03 07:52:06 INFO Executor: Finished task 3.0 in stage 13.0 (TID 168). 2871 bytes result sent to driver
+23/02/03 07:52:06 INFO TaskSetManager: Finished task 3.0 in stage 13.0 (TID 168) in 773 ms on 192.168.68.123 (executor driver) (1/4)
+23/02/03 07:52:06 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-13-events.json, range: 0-186826, partition values: [empty row]
+23/02/03 07:52:06 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-26-events.json, range: 0-123576, partition values: [empty row]
+23/02/03 07:52:06 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-30-events.json, range: 0-177211, partition values: [empty row]
+23/02/03 07:52:06 INFO Executor: Finished task 2.0 in stage 13.0 (TID 167). 2828 bytes result sent to driver
+23/02/03 07:52:06 INFO TaskSetManager: Finished task 2.0 in stage 13.0 (TID 167) in 877 ms on 192.168.68.123 (executor driver) (2/4)
+23/02/03 07:52:06 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-16-events.json, range: 0-175491, partition values: [empty row]
+23/02/03 07:52:06 INFO Executor: Finished task 1.0 in stage 13.0 (TID 166). 2828 bytes result sent to driver
+23/02/03 07:52:06 INFO TaskSetManager: Finished task 1.0 in stage 13.0 (TID 166) in 960 ms on 192.168.68.123 (executor driver) (3/4)
+23/02/03 07:52:06 INFO Executor: Finished task 0.0 in stage 13.0 (TID 165). 2828 bytes result sent to driver
+23/02/03 07:52:06 INFO TaskSetManager: Finished task 0.0 in stage 13.0 (TID 165) in 1083 ms on 192.168.68.123 (executor driver) (4/4)
+23/02/03 07:52:06 INFO TaskSchedulerImpl: Removed TaskSet 13.0, whose tasks have all completed, from pool 
+23/02/03 07:52:06 INFO DAGScheduler: ShuffleMapStage 13 (parquet at NativeMethodAccessorImpl.java:0) finished in 1,115 s
+23/02/03 07:52:06 INFO DAGScheduler: looking for newly runnable stages
+23/02/03 07:52:06 INFO DAGScheduler: running: Set()
+23/02/03 07:52:06 INFO DAGScheduler: waiting: Set()
+23/02/03 07:52:06 INFO DAGScheduler: failed: Set()
+23/02/03 07:52:06 INFO ShufflePartitionsUtil: For shuffle(3), advisory target size: 67108864, actual target size 1048576, minimum partition size: 1048576
+23/02/03 07:52:06 INFO HashAggregateExec: spark.sql.codegen.aggregate.map.twolevel.enabled is set to true, but current version of codegened fast hashmap does not support this aggregate.
+23/02/03 07:52:06 INFO BlockManagerInfo: Removed broadcast_12_piece0 on 192.168.68.123:34037 in memory (size: 34.1 KiB, free: 434.4 MiB)
+23/02/03 07:52:06 INFO CodeGenerator: Code generated in 148.838299 ms
+23/02/03 07:52:06 INFO SparkContext: Starting job: parquet at NativeMethodAccessorImpl.java:0
+23/02/03 07:52:06 INFO DAGScheduler: Got job 11 (parquet at NativeMethodAccessorImpl.java:0) with 1 output partitions
+23/02/03 07:52:06 INFO DAGScheduler: Final stage: ResultStage 15 (parquet at NativeMethodAccessorImpl.java:0)
+23/02/03 07:52:06 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 14)
+23/02/03 07:52:06 INFO DAGScheduler: Missing parents: List()
+23/02/03 07:52:06 INFO DAGScheduler: Submitting ResultStage 15 (MapPartitionsRDD[50] at parquet at NativeMethodAccessorImpl.java:0), which has no missing parents
+23/02/03 07:52:06 INFO MemoryStore: Block broadcast_17 stored as values in memory (estimated size 247.9 KiB, free 433.9 MiB)
+23/02/03 07:52:06 INFO MemoryStore: Block broadcast_17_piece0 stored as bytes in memory (estimated size 91.3 KiB, free 433.8 MiB)
+23/02/03 07:52:06 INFO BlockManagerInfo: Added broadcast_17_piece0 in memory on 192.168.68.123:34037 (size: 91.3 KiB, free: 434.3 MiB)
+23/02/03 07:52:06 INFO SparkContext: Created broadcast 17 from broadcast at DAGScheduler.scala:1513
+23/02/03 07:52:06 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 15 (MapPartitionsRDD[50] at parquet at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0))
+23/02/03 07:52:06 INFO TaskSchedulerImpl: Adding task set 15.0 with 1 tasks resource profile 0
+23/02/03 07:52:06 INFO TaskSetManager: Starting task 0.0 in stage 15.0 (TID 169) (192.168.68.123, executor driver, partition 0, NODE_LOCAL, 4453 bytes) taskResourceAssignments Map()
+23/02/03 07:52:06 INFO Executor: Running task 0.0 in stage 15.0 (TID 169)
+23/02/03 07:52:06 INFO ShuffleBlockFetcherIterator: Getting 4 (148.7 KiB) non-empty blocks including 4 (148.7 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+23/02/03 07:52:06 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 10 ms
+23/02/03 07:52:06 INFO CodeGenerator: Code generated in 15.455051 ms
+23/02/03 07:52:06 INFO CodeGenerator: Code generated in 10.775109 ms
+23/02/03 07:52:07 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+23/02/03 07:52:07 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+23/02/03 07:52:07 INFO SQLHadoopMapReduceCommitProtocol: Using user defined output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+23/02/03 07:52:07 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+23/02/03 07:52:07 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+23/02/03 07:52:07 INFO SQLHadoopMapReduceCommitProtocol: Using output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+23/02/03 07:52:07 INFO CodeGenerator: Code generated in 16.78131 ms
+23/02/03 07:52:07 INFO CodeGenerator: Code generated in 13.093787 ms
+23/02/03 07:52:07 INFO CodeGenerator: Code generated in 30.389497 ms
+23/02/03 07:52:07 INFO CodecConfig: Compression: SNAPPY
+23/02/03 07:52:07 INFO CodecConfig: Compression: SNAPPY
+23/02/03 07:52:07 INFO ParquetOutputFormat: Parquet block size to 134217728
+23/02/03 07:52:07 INFO ParquetOutputFormat: Validation is off
+23/02/03 07:52:07 INFO ParquetOutputFormat: Maximum row group padding size is 8388608 bytes
+23/02/03 07:52:07 INFO ParquetOutputFormat: Parquet properties are:
+Parquet page size to 1048576
+Parquet dictionary page size to 1048576
+Dictionary is true
+Writer version is: PARQUET_1_0
+Page size checking is: estimated
+Min row count for page size check is: 100
+Max row count for page size check is: 10000
+Truncate length for column indexes is: 64
+Truncate length for statistics min/max  is: 2147483647
+Bloom filter enabled: false
+Max Bloom filter size for a column is 1048576
+Bloom filter expected number of distinct values are: null
+Page row count limit to 20000
+Writing page checksums is: on
+23/02/03 07:52:07 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "ts",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "start_time",
+    "type" : "timestamp",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "hour",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "day",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "week",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "weekday",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  optional int32 ts;
+  optional int96 start_time;
+  optional int32 hour;
+  optional int32 day;
+  optional int32 week;
+  optional int32 weekday;
+}
+
+       
+23/02/03 07:52:07 INFO FileOutputCommitter: Saved output of task 'attempt_202302030752069110950455217067761_0015_m_000000_169' to file:/home/felipe/Documentos/Udacity/Data Engineering Nanodegree/Data_lake_project/lake/time/_temporary/0/task_202302030752069110950455217067761_0015_m_000000
+23/02/03 07:52:07 INFO SparkHadoopMapRedUtil: attempt_202302030752069110950455217067761_0015_m_000000_169: Committed. Elapsed time: 0 ms.
+23/02/03 07:52:07 INFO Executor: Finished task 0.0 in stage 15.0 (TID 169). 5768 bytes result sent to driver
+23/02/03 07:52:07 INFO TaskSetManager: Finished task 0.0 in stage 15.0 (TID 169) in 729 ms on 192.168.68.123 (executor driver) (1/1)
+23/02/03 07:52:07 INFO TaskSchedulerImpl: Removed TaskSet 15.0, whose tasks have all completed, from pool 
+23/02/03 07:52:07 INFO DAGScheduler: ResultStage 15 (parquet at NativeMethodAccessorImpl.java:0) finished in 0,793 s
+23/02/03 07:52:07 INFO DAGScheduler: Job 11 is finished. Cancelling potential speculative or zombie tasks for this job
+23/02/03 07:52:07 INFO TaskSchedulerImpl: Killing all running tasks in stage 15: Stage finished
+23/02/03 07:52:07 INFO DAGScheduler: Job 11 finished: parquet at NativeMethodAccessorImpl.java:0, took 0,815434 s
+23/02/03 07:52:07 INFO FileFormatWriter: Start to commit write Job c829af28-8e20-435d-8ce6-a61e5ea60c35.
+23/02/03 07:52:07 INFO FileFormatWriter: Write Job c829af28-8e20-435d-8ce6-a61e5ea60c35 committed. Elapsed time: 43 ms.
+23/02/03 07:52:07 INFO FileFormatWriter: Finished processing stats for write job c829af28-8e20-435d-8ce6-a61e5ea60c35.
+23/02/03 07:52:08 INFO FileSourceStrategy: Pushed Filters: IsNotNull(page),EqualTo(page,NextSong)
+23/02/03 07:52:08 INFO FileSourceStrategy: Post-Scan Filters: isnotnull(page#92),(page#92 = NextSong)
+23/02/03 07:52:08 INFO FileSourceStrategy: Output Data Schema: struct<artist: string, page: string, sessionId: bigint, song: string, ts: bigint ... 1 more field>
+23/02/03 07:52:08 INFO FileSourceStrategy: Pushed Filters: IsNotNull(title),IsNotNull(artist_name)
+23/02/03 07:52:08 INFO FileSourceStrategy: Post-Scan Filters: isnotnull(title#16),isnotnull(artist_name#12)
+23/02/03 07:52:08 INFO FileSourceStrategy: Output Data Schema: struct<artist_id: string, artist_name: string, song_id: string, title: string ... 2 more fields>
+23/02/03 07:52:08 INFO ParquetFileFormat: Using default output committer for Parquet: org.apache.parquet.hadoop.ParquetOutputCommitter
+23/02/03 07:52:08 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+23/02/03 07:52:08 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+23/02/03 07:52:08 INFO SQLHadoopMapReduceCommitProtocol: Using user defined output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+23/02/03 07:52:08 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+23/02/03 07:52:08 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+23/02/03 07:52:08 INFO SQLHadoopMapReduceCommitProtocol: Using output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+23/02/03 07:52:08 INFO CodeGenerator: Code generated in 17.568741 ms
+23/02/03 07:52:08 INFO MemoryStore: Block broadcast_18 stored as values in memory (estimated size 199.2 KiB, free 433.6 MiB)
+23/02/03 07:52:08 INFO MemoryStore: Block broadcast_18_piece0 stored as bytes in memory (estimated size 34.1 KiB, free 433.6 MiB)
+23/02/03 07:52:08 INFO BlockManagerInfo: Added broadcast_18_piece0 in memory on 192.168.68.123:34037 (size: 34.1 KiB, free: 434.2 MiB)
+23/02/03 07:52:08 INFO SparkContext: Created broadcast 18 from $anonfun$withThreadLocalCaptured$1 at FutureTask.java:264
+23/02/03 07:52:08 INFO FileSourceScanExec: Planning scan with bin packing, max size: 74453701 bytes, open cost is considered as scanning 4194304 bytes.
+23/02/03 07:52:08 INFO SparkContext: Starting job: $anonfun$withThreadLocalCaptured$1 at FutureTask.java:264
+23/02/03 07:52:08 INFO DAGScheduler: Got job 12 ($anonfun$withThreadLocalCaptured$1 at FutureTask.java:264) with 4 output partitions
+23/02/03 07:52:08 INFO DAGScheduler: Final stage: ResultStage 16 ($anonfun$withThreadLocalCaptured$1 at FutureTask.java:264)
+23/02/03 07:52:08 INFO DAGScheduler: Parents of final stage: List()
+23/02/03 07:52:08 INFO DAGScheduler: Missing parents: List()
+23/02/03 07:52:08 INFO DAGScheduler: Submitting ResultStage 16 (MapPartitionsRDD[54] at $anonfun$withThreadLocalCaptured$1 at FutureTask.java:264), which has no missing parents
+23/02/03 07:52:08 INFO MemoryStore: Block broadcast_19 stored as values in memory (estimated size 13.8 KiB, free 433.6 MiB)
+23/02/03 07:52:08 INFO MemoryStore: Block broadcast_19_piece0 stored as bytes in memory (estimated size 6.8 KiB, free 433.5 MiB)
+23/02/03 07:52:08 INFO BlockManagerInfo: Added broadcast_19_piece0 in memory on 192.168.68.123:34037 (size: 6.8 KiB, free: 434.2 MiB)
+23/02/03 07:52:08 INFO SparkContext: Created broadcast 19 from broadcast at DAGScheduler.scala:1513
+23/02/03 07:52:08 INFO DAGScheduler: Submitting 4 missing tasks from ResultStage 16 (MapPartitionsRDD[54] at $anonfun$withThreadLocalCaptured$1 at FutureTask.java:264) (first 15 tasks are for partitions Vector(0, 1, 2, 3))
+23/02/03 07:52:08 INFO TaskSchedulerImpl: Adding task set 16.0 with 4 tasks resource profile 0
+23/02/03 07:52:08 INFO TaskSetManager: Starting task 0.0 in stage 16.0 (TID 170) (192.168.68.123, executor driver, partition 0, PROCESS_LOCAL, 8011 bytes) taskResourceAssignments Map()
+23/02/03 07:52:08 INFO TaskSetManager: Starting task 1.0 in stage 16.0 (TID 171) (192.168.68.123, executor driver, partition 1, PROCESS_LOCAL, 8011 bytes) taskResourceAssignments Map()
+23/02/03 07:52:08 INFO TaskSetManager: Starting task 2.0 in stage 16.0 (TID 172) (192.168.68.123, executor driver, partition 2, PROCESS_LOCAL, 8011 bytes) taskResourceAssignments Map()
+23/02/03 07:52:08 INFO TaskSetManager: Starting task 3.0 in stage 16.0 (TID 173) (192.168.68.123, executor driver, partition 3, PROCESS_LOCAL, 7834 bytes) taskResourceAssignments Map()
+23/02/03 07:52:08 INFO Executor: Running task 1.0 in stage 16.0 (TID 171)
+23/02/03 07:52:08 INFO Executor: Running task 0.0 in stage 16.0 (TID 170)
+23/02/03 07:52:08 INFO Executor: Running task 2.0 in stage 16.0 (TID 172)
+23/02/03 07:52:08 INFO Executor: Running task 3.0 in stage 16.0 (TID 173)
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/C/TRABCEI128F424C983.json, range: 0-254, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/B/TRABBKX128F4285205.json, range: 0-281, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/B/TRABBXU128F92FEF48.json, range: 0-268, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/B/TRABBOR128F4286200.json, range: 0-354, partition values: [empty row]
+23/02/03 07:52:08 INFO CodeGenerator: Code generated in 42.925873 ms
+23/02/03 07:52:08 INFO CodeGenerator: Code generated in 17.52539 ms
+23/02/03 07:52:08 INFO CodeGenerator: Code generated in 15.215243 ms
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/A/TRAAARJ128F9320760.json, range: 0-253, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/C/TRAACVS128E078BE39.json, range: 0-310, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/B/TRABBVJ128F92F7EAA.json, range: 0-267, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/B/TRABBOP128F931B50D.json, range: 0-281, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/C/TRAACER128F4290F96.json, range: 0-309, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/B/TRABBBV128F42967D7.json, range: 0-253, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/A/TRABAXV128F92F6AE3.json, range: 0-266, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/B/TRAABJV128F1460C49.json, range: 0-279, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/A/TRAAAEF128F4273421.json, range: 0-265, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/A/TRABAFP128F931E9A1.json, range: 0-307, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/C/TRABCUQ128E0783E2B.json, range: 0-253, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/B/TRABBZN12903CD9297.json, range: 0-265, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/B/TRAABLR128F423B7E3.json, range: 0-278, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/C/TRAACLV128F427E123.json, range: 0-304, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/A/TRABACN128F425B784.json, range: 0-252, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/B/TRAABYW128F4244559.json, range: 0-264, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/C/TRABCRU128F423F449.json, range: 0-252, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/A/TRABAFJ128F42AF24E.json, range: 0-278, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/C/TRABCIX128F4265903.json, range: 0-304, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/A/TRABATO128F42627E9.json, range: 0-250, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/A/TRABAWW128F4250A31.json, range: 0-278, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/B/TRABBNP128F932546F.json, range: 0-250, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/C/TRABCEC128F426456E.json, range: 0-263, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/C/TRABCFL128F149BB0D.json, range: 0-303, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/A/TRAAAAW128F429D538.json, range: 0-261, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/B/TRABBJE12903CDB442.json, range: 0-278, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/C/TRABCKL128F423A778.json, range: 0-295, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/C/TRABCPZ128F4275C32.json, range: 0-250, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/C/TRABCXB128F4286BD3.json, range: 0-261, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/C/TRAACOW128F933E35F.json, range: 0-276, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/A/TRABAXR128F426515F.json, range: 0-291, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/C/TRAACNS128F14A2DF5.json, range: 0-290, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/B/TRAABVM128F92CA9DC.json, range: 0-249, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/C/TRABCYE128F934CE1D.json, range: 0-261, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/B/TRABBAM128F429D223.json, range: 0-276, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/C/TRAACTB12903CAAF15.json, range: 0-290, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/A/TRAAAVG12903CFA543.json, range: 0-260, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/B/TRAABXG128F9318EBD.json, range: 0-248, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/B/TRABBLU128F93349CF.json, range: 0-276, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/A/TRABAIO128F42938F9.json, range: 0-290, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/B/TRAABJL12903CDCF1A.json, range: 0-247, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/C/TRAACSL128F93462F4.json, range: 0-275, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/C/TRAACCG128F92E8A55.json, range: 0-260, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/A/TRABAZH128F930419A.json, range: 0-246, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/A/TRAAAVO128F93133D4.json, range: 0-274, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/B/TRABBTA128F933D304.json, range: 0-273, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/C/TRAACFV128F935E50B.json, range: 0-288, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/A/TRAAAFD128F92F423A.json, range: 0-244, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/B/TRAABCL128F4286650.json, range: 0-270, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/C/TRAACHN128F1489601.json, range: 0-259, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/B/TRAABRB128F9306DD5.json, range: 0-257, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/B/TRAABNV128F425CEE1.json, range: 0-269, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/A/TRAAAMO128F1481E7F.json, range: 0-287, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/C/TRAACIW12903CC0F6D.json, range: 0-244, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/A/TRAAABD128F429CF47.json, range: 0-268, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/A/TRAAAPK128E0786D96.json, range: 0-284, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/C/TRAACPE128F421C1B9.json, range: 0-284, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/A/TRAAAMQ128F1460CD3.json, range: 0-256, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/B/TRAABDL12903CAABBA.json, range: 0-241, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/A/TRAAADZ128F9348C2E.json, range: 0-255, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/C/TRABCTK128F934B224.json, range: 0-238, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/B/TRAABYN12903CFD305.json, range: 0-282, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/C/TRAACQT128F9331780.json, range: 0-268, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/A/TRABAVQ12903CBF7E0.json, range: 0-281, partition values: [empty row]
+23/02/03 07:52:08 INFO Executor: Finished task 3.0 in stage 16.0 (TID 173). 2905 bytes result sent to driver
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/A/TRABAXL128F424FC50.json, range: 0-255, partition values: [empty row]
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/A/C/TRAACZK128F4243829.json, range: 0-268, partition values: [empty row]
+23/02/03 07:52:08 INFO Executor: Finished task 0.0 in stage 16.0 (TID 170). 3472 bytes result sent to driver
+23/02/03 07:52:08 INFO TaskSetManager: Finished task 3.0 in stage 16.0 (TID 173) in 563 ms on 192.168.68.123 (executor driver) (1/4)
+23/02/03 07:52:08 INFO TaskSetManager: Finished task 0.0 in stage 16.0 (TID 170) in 571 ms on 192.168.68.123 (executor driver) (2/4)
+23/02/03 07:52:08 INFO FileScanRDD: Reading File path: file:/home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/song_data/A/B/C/TRABCAJ12903CDFCC2.json, range: 0-255, partition values: [empty row]
+23/02/03 07:52:08 INFO Executor: Finished task 2.0 in stage 16.0 (TID 172). 3083 bytes result sent to driver
+23/02/03 07:52:08 INFO Executor: Finished task 1.0 in stage 16.0 (TID 171). 3161 bytes result sent to driver
+23/02/03 07:52:08 INFO TaskSetManager: Finished task 1.0 in stage 16.0 (TID 171) in 600 ms on 192.168.68.123 (executor driver) (3/4)
+23/02/03 07:52:08 INFO TaskSetManager: Finished task 2.0 in stage 16.0 (TID 172) in 606 ms on 192.168.68.123 (executor driver) (4/4)
+23/02/03 07:52:08 INFO TaskSchedulerImpl: Removed TaskSet 16.0, whose tasks have all completed, from pool 
+23/02/03 07:52:08 INFO DAGScheduler: ResultStage 16 ($anonfun$withThreadLocalCaptured$1 at FutureTask.java:264) finished in 0,626 s
+23/02/03 07:52:08 INFO DAGScheduler: Job 12 is finished. Cancelling potential speculative or zombie tasks for this job
+23/02/03 07:52:08 INFO TaskSchedulerImpl: Killing all running tasks in stage 16: Stage finished
+23/02/03 07:52:08 INFO DAGScheduler: Job 12 finished: $anonfun$withThreadLocalCaptured$1 at FutureTask.java:264, took 0,631062 s
+23/02/03 07:52:08 INFO CodeGenerator: Code generated in 15.50422 ms
+23/02/03 07:52:08 INFO MemoryStore: Block broadcast_20 stored as values in memory (estimated size 4.0 MiB, free 429.5 MiB)
+23/02/03 07:52:08 INFO MemoryStore: Block broadcast_20_piece0 stored as bytes in memory (estimated size 7.6 KiB, free 429.5 MiB)
+23/02/03 07:52:08 INFO BlockManagerInfo: Added broadcast_20_piece0 in memory on 192.168.68.123:34037 (size: 7.6 KiB, free: 434.2 MiB)
+23/02/03 07:52:08 INFO SparkContext: Created broadcast 20 from $anonfun$withThreadLocalCaptured$1 at FutureTask.java:264
+23/02/03 07:52:09 INFO BlockManagerInfo: Removed broadcast_19_piece0 on 192.168.68.123:34037 in memory (size: 6.8 KiB, free: 434.2 MiB)
+23/02/03 07:52:09 INFO FileSourceStrategy: Pushed Filters: IsNotNull(page),EqualTo(page,NextSong)
+23/02/03 07:52:09 INFO FileSourceStrategy: Post-Scan Filters: isnotnull(page#92),(page#92 = NextSong)
+23/02/03 07:52:09 INFO FileSourceStrategy: Output Data Schema: struct<artist: string, page: string, sessionId: bigint, song: string, ts: bigint ... 1 more field>
+23/02/03 07:52:09 INFO CodeGenerator: Code generated in 20.637497 ms
+23/02/03 07:52:09 INFO MemoryStore: Block broadcast_21 stored as values in memory (estimated size 199.2 KiB, free 429.4 MiB)
+23/02/03 07:52:09 INFO MemoryStore: Block broadcast_21_piece0 stored as bytes in memory (estimated size 34.1 KiB, free 429.3 MiB)
+23/02/03 07:52:09 INFO BlockManagerInfo: Added broadcast_21_piece0 in memory on 192.168.68.123:34037 (size: 34.1 KiB, free: 434.2 MiB)
+23/02/03 07:52:09 INFO SparkContext: Created broadcast 21 from parquet at NativeMethodAccessorImpl.java:0
+23/02/03 07:52:09 INFO FileSourceScanExec: Planning scan with bin packing, max size: 32396179 bytes, open cost is considered as scanning 4194304 bytes.
+23/02/03 07:52:09 INFO SparkContext: Starting job: parquet at NativeMethodAccessorImpl.java:0
+23/02/03 07:52:09 INFO DAGScheduler: Got job 13 (parquet at NativeMethodAccessorImpl.java:0) with 4 output partitions
+23/02/03 07:52:09 INFO DAGScheduler: Final stage: ResultStage 17 (parquet at NativeMethodAccessorImpl.java:0)
+23/02/03 07:52:09 INFO DAGScheduler: Parents of final stage: List()
+23/02/03 07:52:09 INFO DAGScheduler: Missing parents: List()
+23/02/03 07:52:09 INFO DAGScheduler: Submitting ResultStage 17 (MapPartitionsRDD[58] at parquet at NativeMethodAccessorImpl.java:0), which has no missing parents
+23/02/03 07:52:09 INFO MemoryStore: Block broadcast_22 stored as values in memory (estimated size 242.8 KiB, free 429.1 MiB)
+23/02/03 07:52:09 INFO MemoryStore: Block broadcast_22_piece0 stored as bytes in memory (estimated size 90.0 KiB, free 429.0 MiB)
+23/02/03 07:52:09 INFO BlockManagerInfo: Added broadcast_22_piece0 in memory on 192.168.68.123:34037 (size: 90.0 KiB, free: 434.1 MiB)
+23/02/03 07:52:09 INFO SparkContext: Created broadcast 22 from broadcast at DAGScheduler.scala:1513
+23/02/03 07:52:09 INFO DAGScheduler: Submitting 4 missing tasks from ResultStage 17 (MapPartitionsRDD[58] at parquet at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0, 1, 2, 3))
+23/02/03 07:52:09 INFO TaskSchedulerImpl: Adding task set 17.0 with 4 tasks resource profile 0
+23/02/03 07:52:09 INFO TaskSetManager: Starting task 0.0 in stage 17.0 (TID 174) (192.168.68.123, executor driver, partition 0, PROCESS_LOCAL, 6193 bytes) taskResourceAssignments Map()
+23/02/03 07:52:09 INFO TaskSetManager: Starting task 1.0 in stage 17.0 (TID 175) (192.168.68.123, executor driver, partition 1, PROCESS_LOCAL, 6193 bytes) taskResourceAssignments Map()
+23/02/03 07:52:09 INFO TaskSetManager: Starting task 2.0 in stage 17.0 (TID 176) (192.168.68.123, executor driver, partition 2, PROCESS_LOCAL, 6193 bytes) taskResourceAssignments Map()
+23/02/03 07:52:09 INFO TaskSetManager: Starting task 3.0 in stage 17.0 (TID 177) (192.168.68.123, executor driver, partition 3, PROCESS_LOCAL, 5851 bytes) taskResourceAssignments Map()
+23/02/03 07:52:09 INFO Executor: Running task 0.0 in stage 17.0 (TID 174)
+23/02/03 07:52:09 INFO Executor: Running task 1.0 in stage 17.0 (TID 175)
+23/02/03 07:52:09 INFO Executor: Running task 2.0 in stage 17.0 (TID 176)
+23/02/03 07:52:09 INFO Executor: Running task 3.0 in stage 17.0 (TID 177)
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-08-events.json, range: 0-102218, partition values: [empty row]
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-03-events.json, range: 0-54084, partition values: [empty row]
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-15-events.json, range: 0-243143, partition values: [empty row]
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-20-events.json, range: 0-174991, partition values: [empty row]
+23/02/03 07:52:09 INFO CodeGenerator: Code generated in 29.368674 ms
+23/02/03 07:52:09 INFO CodeGenerator: Code generated in 15.416054 ms
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-22-events.json, range: 0-46181, partition values: [empty row]
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-10-events.json, range: 0-44076, partition values: [empty row]
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-24-events.json, range: 0-170219, partition values: [empty row]
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-12-events.json, range: 0-99854, partition values: [empty row]
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-11-events.json, range: 0-43711, partition values: [empty row]
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-07-events.json, range: 0-97519, partition values: [empty row]
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-29-events.json, range: 0-168646, partition values: [empty row]
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-21-events.json, range: 0-242588, partition values: [empty row]
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-25-events.json, range: 0-26214, partition values: [empty row]
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-04-events.json, range: 0-85671, partition values: [empty row]
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-01-events.json, range: 0-7151, partition values: [empty row]
+23/02/03 07:52:09 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+23/02/03 07:52:09 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+23/02/03 07:52:09 INFO SQLHadoopMapReduceCommitProtocol: Using user defined output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+23/02/03 07:52:09 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+23/02/03 07:52:09 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+23/02/03 07:52:09 INFO SQLHadoopMapReduceCommitProtocol: Using output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-06-events.json, range: 0-85373, partition values: [empty row]
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-14-events.json, range: 0-217264, partition values: [empty row]
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-19-events.json, range: 0-150798, partition values: [empty row]
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-02-events.json, range: 0-83585, partition values: [empty row]
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-27-events.json, range: 0-141625, partition values: [empty row]
+23/02/03 07:52:09 INFO CodeGenerator: Code generated in 27.694747 ms
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-28-events.json, range: 0-202910, partition values: [empty row]
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-18-events.json, range: 0-75763, partition values: [empty row]
+23/02/03 07:52:09 INFO CodecConfig: Compression: SNAPPY
+23/02/03 07:52:09 INFO CodecConfig: Compression: SNAPPY
+23/02/03 07:52:09 INFO ParquetOutputFormat: Parquet block size to 134217728
+23/02/03 07:52:09 INFO ParquetOutputFormat: Validation is off
+23/02/03 07:52:09 INFO ParquetOutputFormat: Maximum row group padding size is 8388608 bytes
+23/02/03 07:52:09 INFO ParquetOutputFormat: Parquet properties are:
+Parquet page size to 1048576
+Parquet dictionary page size to 1048576
+Dictionary is true
+Writer version is: PARQUET_1_0
+Page size checking is: estimated
+Min row count for page size check is: 100
+Max row count for page size check is: 10000
+Truncate length for column indexes is: 64
+Truncate length for statistics min/max  is: 2147483647
+Bloom filter enabled: false
+Max Bloom filter size for a column is 1048576
+Bloom filter expected number of distinct values are: null
+Page row count limit to 20000
+Writing page checksums is: on
+23/02/03 07:52:09 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "start_time",
+    "type" : "timestamp",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "user_id",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "song_id",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "artist_id",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "session_id",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  optional int96 start_time;
+  optional binary user_id (STRING);
+  optional binary song_id (STRING);
+  optional binary artist_id (STRING);
+  optional int32 session_id;
+}
+
+       
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-23-events.json, range: 0-138647, partition values: [empty row]
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-05-events.json, range: 0-189295, partition values: [empty row]
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-17-events.json, range: 0-66164, partition values: [empty row]
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-09-events.json, range: 0-134804, partition values: [empty row]
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-26-events.json, range: 0-123576, partition values: [empty row]
+23/02/03 07:52:09 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+23/02/03 07:52:09 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+23/02/03 07:52:09 INFO SQLHadoopMapReduceCommitProtocol: Using user defined output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+23/02/03 07:52:09 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+23/02/03 07:52:09 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+23/02/03 07:52:09 INFO SQLHadoopMapReduceCommitProtocol: Using output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+23/02/03 07:52:09 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+23/02/03 07:52:09 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+23/02/03 07:52:09 INFO SQLHadoopMapReduceCommitProtocol: Using user defined output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+23/02/03 07:52:09 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+23/02/03 07:52:09 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+23/02/03 07:52:09 INFO SQLHadoopMapReduceCommitProtocol: Using output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-13-events.json, range: 0-186826, partition values: [empty row]
+23/02/03 07:52:09 INFO CodecConfig: Compression: SNAPPY
+23/02/03 07:52:09 INFO FileOutputCommitter: Saved output of task 'attempt_202302030752092934078575353956820_0017_m_000003_177' to file:/home/felipe/Documentos/Udacity/Data Engineering Nanodegree/Data_lake_project/lake/songplay/_temporary/0/task_202302030752092934078575353956820_0017_m_000003
+23/02/03 07:52:09 INFO SparkHadoopMapRedUtil: attempt_202302030752092934078575353956820_0017_m_000003_177: Committed. Elapsed time: 1 ms.
+23/02/03 07:52:09 INFO CodecConfig: Compression: SNAPPY
+23/02/03 07:52:09 INFO ParquetOutputFormat: Parquet block size to 134217728
+23/02/03 07:52:09 INFO ParquetOutputFormat: Validation is off
+23/02/03 07:52:09 INFO ParquetOutputFormat: Maximum row group padding size is 8388608 bytes
+23/02/03 07:52:09 INFO ParquetOutputFormat: Parquet properties are:
+Parquet page size to 1048576
+Parquet dictionary page size to 1048576
+Dictionary is true
+Writer version is: PARQUET_1_0
+Page size checking is: estimated
+Min row count for page size check is: 100
+Max row count for page size check is: 10000
+Truncate length for column indexes is: 64
+Truncate length for statistics min/max  is: 2147483647
+Bloom filter enabled: false
+Max Bloom filter size for a column is 1048576
+Bloom filter expected number of distinct values are: null
+Page row count limit to 20000
+Writing page checksums is: on
+23/02/03 07:52:09 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "start_time",
+    "type" : "timestamp",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "user_id",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "song_id",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "artist_id",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "session_id",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  optional int96 start_time;
+  optional binary user_id (STRING);
+  optional binary song_id (STRING);
+  optional binary artist_id (STRING);
+  optional int32 session_id;
+}
+
+       
+23/02/03 07:52:09 INFO CodecConfig: Compression: SNAPPY
+23/02/03 07:52:09 INFO CodecConfig: Compression: SNAPPY
+23/02/03 07:52:09 INFO ParquetOutputFormat: Parquet block size to 134217728
+23/02/03 07:52:09 INFO ParquetOutputFormat: Validation is off
+23/02/03 07:52:09 INFO ParquetOutputFormat: Maximum row group padding size is 8388608 bytes
+23/02/03 07:52:09 INFO ParquetOutputFormat: Parquet properties are:
+Parquet page size to 1048576
+Parquet dictionary page size to 1048576
+Dictionary is true
+Writer version is: PARQUET_1_0
+Page size checking is: estimated
+Min row count for page size check is: 100
+Max row count for page size check is: 10000
+Truncate length for column indexes is: 64
+Truncate length for statistics min/max  is: 2147483647
+Bloom filter enabled: false
+Max Bloom filter size for a column is 1048576
+Bloom filter expected number of distinct values are: null
+Page row count limit to 20000
+Writing page checksums is: on
+23/02/03 07:52:09 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "start_time",
+    "type" : "timestamp",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "user_id",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "song_id",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "artist_id",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "session_id",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  optional int96 start_time;
+  optional binary user_id (STRING);
+  optional binary song_id (STRING);
+  optional binary artist_id (STRING);
+  optional int32 session_id;
+}
+
+       
+23/02/03 07:52:09 INFO Executor: Finished task 3.0 in stage 17.0 (TID 177). 4204 bytes result sent to driver
+23/02/03 07:52:09 INFO TaskSetManager: Finished task 3.0 in stage 17.0 (TID 177) in 612 ms on 192.168.68.123 (executor driver) (1/4)
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-30-events.json, range: 0-177211, partition values: [empty row]
+23/02/03 07:52:09 INFO FileScanRDD: Reading File path: file:///home/felipe/Documentos/Udacity/Data%20Engineering%20Nanodegree/Data_lake_project/data/log_data/2018-11-16-events.json, range: 0-175491, partition values: [empty row]
+23/02/03 07:52:10 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+23/02/03 07:52:10 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+23/02/03 07:52:10 INFO SQLHadoopMapReduceCommitProtocol: Using user defined output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+23/02/03 07:52:10 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+23/02/03 07:52:10 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+23/02/03 07:52:10 INFO SQLHadoopMapReduceCommitProtocol: Using output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+23/02/03 07:52:10 INFO CodecConfig: Compression: SNAPPY
+23/02/03 07:52:10 INFO CodecConfig: Compression: SNAPPY
+23/02/03 07:52:10 INFO ParquetOutputFormat: Parquet block size to 134217728
+23/02/03 07:52:10 INFO ParquetOutputFormat: Validation is off
+23/02/03 07:52:10 INFO ParquetOutputFormat: Maximum row group padding size is 8388608 bytes
+23/02/03 07:52:10 INFO ParquetOutputFormat: Parquet properties are:
+Parquet page size to 1048576
+Parquet dictionary page size to 1048576
+Dictionary is true
+Writer version is: PARQUET_1_0
+Page size checking is: estimated
+Min row count for page size check is: 100
+Max row count for page size check is: 10000
+Truncate length for column indexes is: 64
+Truncate length for statistics min/max  is: 2147483647
+Bloom filter enabled: false
+Max Bloom filter size for a column is 1048576
+Bloom filter expected number of distinct values are: null
+Page row count limit to 20000
+Writing page checksums is: on
+23/02/03 07:52:10 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "start_time",
+    "type" : "timestamp",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "user_id",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "song_id",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "artist_id",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "session_id",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  optional int96 start_time;
+  optional binary user_id (STRING);
+  optional binary song_id (STRING);
+  optional binary artist_id (STRING);
+  optional int32 session_id;
+}
+
+       
+23/02/03 07:52:10 INFO CodecPool: Got brand-new compressor [.snappy]
+23/02/03 07:52:10 INFO FileOutputCommitter: Saved output of task 'attempt_202302030752094607598513354616805_0017_m_000002_176' to file:/home/felipe/Documentos/Udacity/Data Engineering Nanodegree/Data_lake_project/lake/songplay/_temporary/0/task_202302030752094607598513354616805_0017_m_000002
+23/02/03 07:52:10 INFO SparkHadoopMapRedUtil: attempt_202302030752094607598513354616805_0017_m_000002_176: Committed. Elapsed time: 3 ms.
+23/02/03 07:52:10 INFO Executor: Finished task 2.0 in stage 17.0 (TID 176). 4204 bytes result sent to driver
+23/02/03 07:52:10 INFO TaskSetManager: Finished task 2.0 in stage 17.0 (TID 176) in 773 ms on 192.168.68.123 (executor driver) (2/4)
+23/02/03 07:52:10 INFO FileOutputCommitter: Saved output of task 'attempt_202302030752093670649723517223761_0017_m_000001_175' to file:/home/felipe/Documentos/Udacity/Data Engineering Nanodegree/Data_lake_project/lake/songplay/_temporary/0/task_202302030752093670649723517223761_0017_m_000001
+23/02/03 07:52:10 INFO SparkHadoopMapRedUtil: attempt_202302030752093670649723517223761_0017_m_000001_175: Committed. Elapsed time: 0 ms.
+23/02/03 07:52:10 INFO Executor: Finished task 1.0 in stage 17.0 (TID 175). 4204 bytes result sent to driver
+23/02/03 07:52:10 INFO TaskSetManager: Finished task 1.0 in stage 17.0 (TID 175) in 834 ms on 192.168.68.123 (executor driver) (3/4)
+23/02/03 07:52:10 INFO FileOutputCommitter: Saved output of task 'attempt_202302030752096177078238310242703_0017_m_000000_174' to file:/home/felipe/Documentos/Udacity/Data Engineering Nanodegree/Data_lake_project/lake/songplay/_temporary/0/task_202302030752096177078238310242703_0017_m_000000
+23/02/03 07:52:10 INFO SparkHadoopMapRedUtil: attempt_202302030752096177078238310242703_0017_m_000000_174: Committed. Elapsed time: 20 ms.
+23/02/03 07:52:10 INFO Executor: Finished task 0.0 in stage 17.0 (TID 174). 4204 bytes result sent to driver
+23/02/03 07:52:10 INFO TaskSetManager: Finished task 0.0 in stage 17.0 (TID 174) in 972 ms on 192.168.68.123 (executor driver) (4/4)
+23/02/03 07:52:10 INFO TaskSchedulerImpl: Removed TaskSet 17.0, whose tasks have all completed, from pool 
+23/02/03 07:52:10 INFO DAGScheduler: ResultStage 17 (parquet at NativeMethodAccessorImpl.java:0) finished in 1,074 s
+23/02/03 07:52:10 INFO DAGScheduler: Job 13 is finished. Cancelling potential speculative or zombie tasks for this job
+23/02/03 07:52:10 INFO TaskSchedulerImpl: Killing all running tasks in stage 17: Stage finished
+23/02/03 07:52:10 INFO DAGScheduler: Job 13 finished: parquet at NativeMethodAccessorImpl.java:0, took 1,078803 s
+23/02/03 07:52:10 INFO FileFormatWriter: Start to commit write Job 69a66897-e57c-4c46-8f72-f34fb0adef27.
+23/02/03 07:52:10 INFO FileFormatWriter: Write Job 69a66897-e57c-4c46-8f72-f34fb0adef27 committed. Elapsed time: 71 ms.
+23/02/03 07:52:10 INFO FileFormatWriter: Finished processing stats for write job 69a66897-e57c-4c46-8f72-f34fb0adef27.
+23/02/03 07:52:10 INFO SparkContext: Invoking stop() from shutdown hook
+23/02/03 07:52:10 INFO SparkUI: Stopped Spark web UI at http://192.168.68.123:4040
+23/02/03 07:52:10 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+23/02/03 07:52:10 INFO MemoryStore: MemoryStore cleared
+23/02/03 07:52:10 INFO BlockManager: BlockManager stopped
+23/02/03 07:52:10 INFO BlockManagerMaster: BlockManagerMaster stopped
+23/02/03 07:52:10 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+23/02/03 07:52:10 INFO SparkContext: Successfully stopped SparkContext
+23/02/03 07:52:10 INFO ShutdownHookManager: Shutdown hook called
+23/02/03 07:52:10 INFO ShutdownHookManager: Deleting directory /tmp/spark-13b1695a-0d15-40d4-bcce-ab548edb3d7e
+23/02/03 07:52:10 INFO ShutdownHookManager: Deleting directory /tmp/spark-f3cde1b3-3542-4118-81f2-66cec6fd5a2b
+23/02/03 07:52:10 INFO ShutdownHookManager: Deleting directory /tmp/spark-f3cde1b3-3542-4118-81f2-66cec6fd5a2b/pyspark-810b4f2c-ac8d-4246-b476-3b00dfaa3aee
