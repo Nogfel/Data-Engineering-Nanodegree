@@ -32,6 +32,8 @@ def process_song_data(spark, input_data, output_data):
     
     # read song data file
     df = spark.read.json(song_data)
+    
+    df.createOrReplaceTempView("staging_songs")
 
     # extract columns to create songs table
     songs_table = spark.sql("""
@@ -96,8 +98,10 @@ def process_log_data(spark, input_data, output_data):
     
     # filter by actions for song plays
     df = df.filter(df.page == 'NextSong')\
-            .select('userId', 'firstName', 'level', 'song', 'artist',
-                    'sessionId', 'location', 'userAgent')
+            .select('userId', 'firstName', 'lastName', 'level', 'gender', 'song', 'artist',
+                    'sessionId', 'location', 'userAgent', 'ts')
+    
+    df.createOrReplaceTempView("staging_events")
 
     # extract columns for users table    
     users_table = spark.sql("""
@@ -192,8 +196,10 @@ def process_log_data(spark, input_data, output_data):
 
 def main():
     spark = create_spark_session()
-    input_data = "s3a://udacity-dend/"
-    output_data = "s3a://sparkyfy-lake/"
+    # input_data = "s3a://udacity-dend/"
+    input_data = "/home/felipe/Documentos/Udacity/Data Engineering Nanodegree/Data_lake_project/data/"
+    # output_data = "s3a://sparkyfy-lake/"
+    output_data = "/home/felipe/Documentos/Udacity/Data Engineering Nanodegree/Data_lake_project/lake/"
     
     process_song_data(spark, input_data, output_data)    
     process_log_data(spark, input_data, output_data)

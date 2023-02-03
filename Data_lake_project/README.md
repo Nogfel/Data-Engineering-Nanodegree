@@ -17,8 +17,4 @@ Before I started the Data Engineering Nanodegree I read the book **Learning Spar
 
 ![Book Cover](https://m.media-amazon.com/images/I/51hh4ltGnnL._SX379_BO1,204,203,200_.jpg)
 
-So, I already had pyspark installed on my machine. But since they recommend using Databricks for completing the examples I had to look for an alternative for running the code on Jupyter Notebooks. The article **How To Use Jupyter Notebooks with Apache Spark** writen by Shanika Wickramasinghe available in [this link](https://www.bmc.com/blogs/jupyter-notebooks-apache-spark/) was used to make it possible.<br>
-
-Since could run everything on my machine I prefered to run code locally and create all the parquet files and just when everything was Ok to go to the cloud. 
-
-In order to this first I have to type `pyspark` on the terminal and access the link that it provides so I can use the pyspark. One important point is that the covers Spark 3.0 and the Udacity's Data Engineering Nanodegree a version of Spark 2. So some codes writen here might break when using Spark 2 .
+So, I already had pyspark installed on my machine. But since they recommend using Databricks for completing the examples I had to look for an alternative for running the code on Jupyter Notebooks. The article **How To Use Jupyter Notebooks with Apache Spark** writen by Shanika Wickramasinghe available in [this link](https://www.bmc.com/blogs/jupyter-notebooks-apache-spark/) was used to make it possible. Even though this is an interesting thing for the exploration part of the project I had to revert all this changes otherwise the application would look for a Jupyter Notebook for execution returning error when submitting the command `spark-submit etl.py`.
