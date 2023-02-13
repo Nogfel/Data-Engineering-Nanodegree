@@ -78,3 +78,9 @@ I just double-checked my users policies and guaranteed that I had "Administrator
   ]
 }
 ```
+
+### Process Data on EMR Cluster, Read and Write Data on S3
+I was also able to run this Spark application on an EMR cluster on AWS reading and writing data from and on a S3 bucket.<br>
+This was done by submitting a `.py` file with some modifications when passing the AWS ACCESS KEY and SECRET KEY.
+After creating the EMR Cluster, I needed to add two extra permissions to my user (*AmazonEMRFullAccessPolicy_v2* and *AmazonEC2FullAccess*) and create a step in the cluster where I passed the path of the `.py` file on S3.  
+For automation processes I think it might be a better idea to run the cluster using SSH.
