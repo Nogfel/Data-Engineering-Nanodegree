@@ -2,7 +2,7 @@
 This project consist of reading data from `.json` files into a Spark application, performing some transformations and exporting the output tables as parquet format. An important observation about this project is that even though the Udacity's Data Engineering Nanodegree program presents Spark 2, **this project was writen in Spark 3**.
 
 ## File Structure
-**`data`:** These folders contain another two folders inside which stores the .json files from log data (log-data) and songs data (song-data). <br>
+**`data`:** These folders contain another two folders inside which stores the .json files from log data (log-data) and songs data (song-data). *When this project was ran reading and writing data using S3 this folders was copied to S3, in order to read and write data on S3.*<br>
 
 **`metastore_db`:** A Hive metastore warehouse (aka spark-warehouse) is the directory where Spark SQL persists tables whereas a Hive metastore (aka metastore_db) is a relational database to manage the metadata of the persistent relational entities, e.g. databases, tables, columns, partitions. For more information about it see [this link](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-hive-metastore.html). Since the data wrangling was performed in SparkSQL this repository was automatically generated.<br>
 
