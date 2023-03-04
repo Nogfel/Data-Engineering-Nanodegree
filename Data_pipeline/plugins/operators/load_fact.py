@@ -5,10 +5,6 @@ from airflow.utils.decorators import apply_defaults
 class LoadFactOperator(BaseOperator):
 
     ui_color = '#F98866'
-    sql_insert_statement = '''
-    INSERT INTO {}
-    {};
-    '''
 
     @apply_defaults
     def __init__(self,
@@ -28,10 +24,8 @@ class LoadFactOperator(BaseOperator):
         
         self.log.info('Inserting data into fact table')
         
-        sql_query = LoadFactOperator.sql_insert_statement.format(
-            self.table_name,
-            self.sql_insert_statement
-        )
-        redshift.run(sql_query)
+        # The only way I could make it work was inserting '[0]' the table_name method. Otherwise, the code 
+        # was understanding it as a tuple with only one element inside.
+        redshift.run("INSERT INTO {} {}".format(self.table_name[0], self.sql_insert_statement))
+        
         self.log.info('Data inserted into fact table.')
-#         self.log.info('LoadFactOperator not implemented yet')
