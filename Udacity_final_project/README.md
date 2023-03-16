@@ -62,8 +62,9 @@ DIMENSIONS:
     OK  dim_visa_motive
             visa_motive_id                              {sas_descriptive_information.csv - filter column = 'i94visa'}
             motive                                      {sas_descriptive_information.csv - filter column = 'i94visa'}
-
-# WORKING ON DIM_PORT     
+# ----------------------
+# WORKING ON DIM_PORT   
+# ----------------------  
     dim_port:
         i94port (KEY)                                   {IMIGRANT TABLE}
         id_modal [i94mode - CODE]                       {dim_modal}

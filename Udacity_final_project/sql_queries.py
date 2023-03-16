@@ -80,7 +80,7 @@ CREATE TABLE dim_state (
 """
 
 dim_modal_create = """
-CREATE TABLE dim_modality (
+CREATE TABLE dim_modal (
     id_modal VARCHAR,
     modal VARCHAR
 )
@@ -181,23 +181,31 @@ ORDER BY 1 ASC
 
 # STILL WORKING HERE
 insert_into_dim_port = """
+INSERT INTO dim_port (port_id, modal_id, port_type, port_name, port_country, port_city)
 SELECT DISTINCT
     si.i94port AS port_id,
     si.i94mode AS modal_id,
     CASE 
-        WHEN dm.modal = 'Air' THEN sac.type ELSE 'UNKNOWN'
+        WHEN dm.modal = 'Air' AND sac.type IS NOT NULL THEN sac.type 
+        WHEN sac.type IS NULL THEN 'UNKNOWN'
+        ELSE 'UNKNOWN'
     END AS port_type,
     CASE 
-        WHEN dm.modal = 'Air' THEN sac.name ELSE 'UNKNOWN'
+        WHEN dm.modal = 'Air' AND sac.name IS NOT NULL THEN sac.name 
+        WHEN sac.name IS NULL THEN 'UNKNOWN'
+        ELSE 'UNKNOWN'
     END AS port_name,
     CASE 
-        WHEN dm.modal = 'Air' THEN sac.iso_country ELSE 'UNKNOWN'
+        WHEN dm.modal = 'Air' AND sac.iso_country IS NOT NULL THEN sac.iso_country 
+        WHEN sac.iso_country IS NULL THEN 'UNKNOWN'
+        ELSE 'UNKNOWN'
     END AS port_country,
     CASE 
-        WHEN dm.modal = 'Air' THEN sac.municipality ELSE 'UNKNOWN'
+        WHEN dm.modal = 'Air' AND sac.municipality IS NOT NULL THEN sac.municipality 
+        WHEN sac.municipality IS NULL THEN 'UNKNOWN'
+        ELSE 'UNKNOWN'
     END AS port_city
 FROM staging_imigration si
 LEFT JOIN staging_airport_codes sac ON si.i94port = sac.iata_code
-LEFT JOIN dim_modal dm ON dm.id_modal = si.i94mode
-WHERE port_type IS NOT NULL
+LEFT JOIN dim_modality dm ON dm.id_modal = si.i94mode
 """
