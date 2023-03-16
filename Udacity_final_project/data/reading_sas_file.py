@@ -21,7 +21,6 @@ i94visa = {'1':'Business',
 '3' : 'Student'}
 
 
-# all_raw_data_dicts = [i94cit_res, i94port, i94mode, i94addr, i94visa]
 all_raw_data_dicts = {'i94cit_res':i94cit_res,
                       'i94port':i94port,
                       'i94mode':i94mode,
@@ -29,8 +28,8 @@ all_raw_data_dicts = {'i94cit_res':i94cit_res,
                       'i94visa':i94visa}
 
 with open('sas_descriptive_information.csv', 'w', newline='') as f:
-    writer = csv.DictWriter(f, fieldnames=['id', 'description', 'table'])
+    writer = csv.DictWriter(f, fieldnames=['id', 'description', 'column'], delimiter='|')
     writer.writeheader()
     for key_table, dicts in all_raw_data_dicts.items():
         for key, value in dicts.items():
-            f.write('{0},{1}, {2}\n'.format(key, value, key_table))
+            f.write('"{0}"|"{1}"|"{2}"\n'.format(key, value, key_table))
