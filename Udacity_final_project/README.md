@@ -3,6 +3,9 @@
 --------------------------------------------
 # Udacity's Capstone Project
 
+## Important observation
+This project was designed to be used with the Airflow available in the Project 5 workspace (Data pipelines Project).
+
 ## Tables needed
 `airport-codes_csv.csv`
 `imigration_data_sample.csv`
@@ -53,19 +56,19 @@ DIMENSIONS:
         birth_place (i94cit)                            {IMIGRANT TABLE}
         residence (i94res)                              {IMIGRANT TABLE}
 
+# Parei aqui
     dim_visa:
         visa_id                                         {CREATE}      
         visa_motive_id                                  {sas_descriptive_information.csv - filter column = 'i94visa'}
         visa_issued_place (VISAPOST)                    {IMIGRANT TABLE}
         visa_type (VISATYPE)                            {IMIGRANT TABLE}
+# Parei aqui
 
     OK  dim_visa_motive
             visa_motive_id                              {sas_descriptive_information.csv - filter column = 'i94visa'}
             motive                                      {sas_descriptive_information.csv - filter column = 'i94visa'}
-# ----------------------
-# WORKING ON DIM_PORT   
-# ----------------------  
-    dim_port:
+
+OK  dim_port:
         i94port (KEY)                                   {IMIGRANT TABLE}
         id_modal [i94mode - CODE]                       {dim_modal}
         type                                            {`airport-code_csv`}

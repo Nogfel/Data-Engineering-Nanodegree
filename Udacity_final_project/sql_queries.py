@@ -103,6 +103,13 @@ CREATE TABLE dim_port (
     port_city VARCHAR
 )
 """
+dim_visa_create = """
+CREATE TABLE dim_visa(
+    visa_id bigint IDENTITY(1, 1),
+    visa_motive_id VARCHAR,
+    visa_issued_place VARCHAR
+    visa_type VARCHAR;
+"""
 
 # STAGING TABLES
 
@@ -110,30 +117,30 @@ staging_airport_codes_copy = ("""
     copy staging_airport_codes FROM '{}'
     credentials 'aws_iam_role={}'
     region {}
-    delimiter ',' EMPTYASNULL CSV NULL AS '\0'
+    delimiter '{}' EMPTYASNULL CSV NULL AS '\0'
     IGNOREHEADER 1;
-""").format(AIRPORT_CODE_DATA, ARN, REGION)
+""").format(AIRPORT_CODE_DATA, ARN, REGION, DELIMITER)
 
 staging_imigration_copy = ("""
     copy staging_imigration FROM '{}'
     credentials 'aws_iam_role={}'
     region {}
-    delimiter ',' EMPTYASNULL CSV NULL AS '\0'
+    delimiter '{}' EMPTYASNULL CSV NULL AS '\0'
     IGNOREHEADER 1;
-""").format(IMIGRATION_DATA, ARN, REGION)
+""").format(IMIGRATION_DATA, ARN, REGION, DELIMITER)
 
 staging_sas_information_copy = ("""
     copy staging_sas_information FROM '{}'
     credentials 'aws_iam_role={}'
     region {}
-    delimiter '|' EMPTYASNULL CSV NULL AS '\0'
+    delimiter '{}' EMPTYASNULL CSV NULL AS '\0'
     IGNOREHEADER 1;
-""").format(SAS_DATA, ARN, REGION)
+""").format(SAS_DATA, ARN, REGION, DELIMITER)
 
 
 # DIM TABLES
 
-insert_into_dim_country = """
+load_dim_country = """
 INSERT INTO dim_country (id, country)
 SELECT
     id,
@@ -148,7 +155,7 @@ WHERE column_name = 'i94cit_res'
 ORDER BY 1 ASC
 """
 
-insert_into_dim_state = """
+load_dim_state = """
 INSERT INTO dim_state (id, state)
 SELECT
     id,
@@ -159,7 +166,7 @@ WHERE column_name = 'i94addr'
 ORDER BY 1 ASC
 """
 
-insert_into_dim_modal = """
+load_dim_modal = """
 INSERT INTO dim_modal (id_modal, modal)
 SELECT
     id AS id_modal,
@@ -169,7 +176,7 @@ WHERE column_name = 'i94mode'
 ORDER BY 1 ASC
 """
 
-inser_into_dim_visa_motive = """
+load_dim_visa_motive = """
 INSERT INTO dim_visa_motive (visa_motive_id, motive)
 SELECT
     id AS visa_motive_id,
@@ -179,8 +186,7 @@ WHERE column_name = 'i94visa'
 ORDER BY 1 ASC
 """
 
-# STILL WORKING HERE
-insert_into_dim_port = """
+load_dim_port = """
 INSERT INTO dim_port (port_id, modal_id, port_type, port_name, port_country, port_city)
 SELECT DISTINCT
     si.i94port AS port_id,
