@@ -1,12 +1,5 @@
-
-# DROP TABLES
-staging_airport_codes_drop = """DROP TABLE IF EXISTS staging_airport_codes"""
-staging_imigration_drop = """DROP TABLE IF EXISTS staging_imigration"""
-staging_sas_drop = """DROP TABLE IF EXISTS staging_sas"""
-
-
 # CREATE TABLES
-staging_airport_codes_create_table = """
+create_staging_airport_codes = ("""
 CREATE TABLE staging_airport_codes (
     ident VARCHAR, 
     type VARCHAR, 
@@ -21,10 +14,9 @@ CREATE TABLE staging_airport_codes (
     local_code VARCHAR,
     coordinates VARCHAR
 )
-"""
+""")
 
-staging_imigration_create_table = """
-CREATE TABLE staging_imigration (
+create_staging_imigration = ("""CREATE TABLE staging_imigration (
     Unnamed_0 INTEGER, 
     cicid FLOAT, 
     i94yr FLOAT, 
@@ -54,94 +46,78 @@ CREATE TABLE staging_imigration (
     admnum FLOAT, 
     fltno VARCHAR, 
     visatype VARCHAR
-)
-"""
+)""")
 
-staging_sas_create_table = """
-CREATE TABLE staging_sas_information (
+create_staging_sas_information = ("""CREATE TABLE staging_sas_information (
     id	VARCHAR,
     description	VARCHAR,
     column_name VARCHAR 
-)
-"""
+)""")
 
-dim_country_create = """
-CREATE TABLE dim_country (
+create_dim_country = ("""CREATE TABLE dim_country (
     id VARCHAR,
     country VARCHAR
-)
-"""
+)""")
 
-dim_state_create = """
-CREATE TABLE dim_state (
+create_dim_state = ("""CREATE TABLE dim_state (
     id VARCHAR,
     state VARCHAR
-)
-"""
+)""")
 
-dim_modal_create = """
-CREATE TABLE dim_modal (
+create_dim_modal = ("""CREATE TABLE dim_modal (
     id_modal VARCHAR,
     modal VARCHAR
-)
-"""
+)""")
 
-dim_visa_motive_create = """
-CREATE TABLE dim_visa_motive (
+create_dim_visa_motive = ("""CREATE TABLE dim_visa_motive (
     visa_motive_id VARCHAR,
     motive VARCHAR
-)
-"""
+)""")
 
-dim_port_create = """
-CREATE TABLE dim_port (
+create_dim_port = ("""CREATE TABLE dim_port (
     port_id VARCHAR,
     modal_id VARCHAR,
     port_type VARCHAR,
     port_name VARCHAR,
     port_country VARCHAR,
     port_city VARCHAR
+)""")
+
+create_dim_imigrant = ("""CREATE TABLE dim_imigrant(
+    imigrant_id VARCHAR,
+    gender VARCHAR,
+    occupation VARCHAR,
+    birth_year INTEGER,
+    admission_number VARCHAR,
+    birth_country_id INTEGER,
+    state_residence_id VARCHAR,
+    visa_motive_id INTEGER,
+    visa_issued_place VARCHAR,
+    visa_type VARCHAR
+)""")
+                       
+create_fact_imigration = ("""
+CREATE TABLE fact_imigration (
+    id INT IDENTITY(1,1),
+    imigrant_id VARCHAR,
+    id_port_arrival_us  VARCHAR,
+    count INTEGER,
+    flight_number VARCHAR
 )
-"""
-dim_visa_create = """
-CREATE TABLE dim_visa(
-    visa_id bigint IDENTITY(1, 1),
-    visa_motive_id VARCHAR,
-    visa_issued_place VARCHAR
-    visa_type VARCHAR;
-"""
+""")
 
-# STAGING TABLES
-
-staging_airport_codes_copy = ("""
-    copy staging_airport_codes FROM '{}'
-    credentials 'aws_iam_role={}'
-    region {}
-    delimiter '{}' EMPTYASNULL CSV NULL AS '\0'
+# LOAD STAGE TABLES
+load_staging_tables = ("""
+    COPY {} FROM '{}'
+    credentials 'aws_iam_role=arn:aws:iam::644393144861:role/imigrationRole'
+    region '{}'
+    delimiter '{}' EMPTYASNULL CSV NULL AS '\\0'
     IGNOREHEADER 1;
-""").format(AIRPORT_CODE_DATA, ARN, REGION, DELIMITER)
+""")
+                     
+# LOAD TABLES
 
-staging_imigration_copy = ("""
-    copy staging_imigration FROM '{}'
-    credentials 'aws_iam_role={}'
-    region {}
-    delimiter '{}' EMPTYASNULL CSV NULL AS '\0'
-    IGNOREHEADER 1;
-""").format(IMIGRATION_DATA, ARN, REGION, DELIMITER)
-
-staging_sas_information_copy = ("""
-    copy staging_sas_information FROM '{}'
-    credentials 'aws_iam_role={}'
-    region {}
-    delimiter '{}' EMPTYASNULL CSV NULL AS '\0'
-    IGNOREHEADER 1;
-""").format(SAS_DATA, ARN, REGION, DELIMITER)
-
-
-# DIM TABLES
-
-load_dim_country = """
-INSERT INTO dim_country (id, country)
+load_dim_country = ("""
 SELECT
     id,
     CASE
@@ -153,10 +129,9 @@ SELECT
 FROM staging_sas_information
 WHERE column_name = 'i94cit_res'
 ORDER BY 1 ASC
-"""
+""")
 
-load_dim_state = """
-INSERT INTO dim_state (id, state)
+load_dim_state = ("""
 SELECT
     id,
     description
@@ -164,30 +139,27 @@ FROM staging_sas_information
 WHERE column_name = 'i94addr'
     AND id NOT IN ('99', 'GU', 'PR', 'VI')
 ORDER BY 1 ASC
-"""
+""")
 
-load_dim_modal = """
-INSERT INTO dim_modal (id_modal, modal)
+load_dim_modal = ("""
 SELECT
     id AS id_modal,
     description AS modal
 FROM staging_sas_information
 WHERE column_name = 'i94mode'
 ORDER BY 1 ASC
-"""
+""")
 
-load_dim_visa_motive = """
-INSERT INTO dim_visa_motive (visa_motive_id, motive)
+load_dim_visa_motive = ("""
 SELECT
     id AS visa_motive_id,
     description AS motive
 FROM staging_sas_information
 WHERE column_name = 'i94visa'
 ORDER BY 1 ASC
-"""
+""")
 
-load_dim_port = """
-INSERT INTO dim_port (port_id, modal_id, port_type, port_name, port_country, port_city)
+load_dim_port = ("""
 SELECT DISTINCT
     si.i94port AS port_id,
     si.i94mode AS modal_id,
@@ -213,5 +185,38 @@ SELECT DISTINCT
     END AS port_city
 FROM staging_imigration si
 LEFT JOIN staging_airport_codes sac ON si.i94port = sac.iata_code
-LEFT JOIN dim_modality dm ON dm.id_modal = si.i94mode
-"""
+LEFT JOIN dim_modal dm ON dm.id_modal = si.i94mode
+""")
+
+load_dim_imigrant = ("""
+    SELECT
+        cicid AS imigrant_id,
+        CASE
+            WHEN gender = 'X' OR gender IS NULL THEN 'UNKNOWN' 
+            ELSE gender 
+        END AS gender,
+        CASE
+            WHEN occup IS NULL THEN 'UNKNOWN'
+            ELSE occup
+        END AS occupation,
+        biryear AS birth_year,
+        admnum AS admission_number,
+        i94cit AS birth_country_id,
+        i94addr AS state_residence_id,
+        i94visa AS visa_motive_id,
+        CASE
+            WHEN visapost IS NULL THEN 'UNKNOWN'
+            ELSE visapost
+        END AS visa_issued_place,
+        visatype AS visa_type
+    FROM staging_imigration
+""")
+
+load_fact_imigration = ("""
+SELECT
+    cicid AS imigrant_id,
+    i94port AS id_port_arrival_us,
+    count,
+    fltno AS flight_number
+FROM staging_imigration
+""")
