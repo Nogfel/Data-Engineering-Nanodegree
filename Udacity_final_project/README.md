@@ -13,7 +13,7 @@ Since all the data in `I94_SAS_Labels_Descriptions.SAS` are formatted in a parti
 ## Execution Order
 
 1) Execute `create_cluster_aws.py` file. _Creates the necessary infracstructure on AWS Cloud_;
-2) Execute `reading_sas_file` file. _Exports all the necessary id and values from the SAS file as a .csv file_;
+2) Execute `reading_sas_file` file. _Exports all the necessary id and values from the SAS file as a unique .csv file_;
 3) Create a S3 bucket, named as `nogfel-imigration`, in the same region where the redshift cluster was created _(us-west-2)_;
 4) Create folders named as `airport_data`, `imigration_data` and `sas_data` on the root of `nogfel-imigration`;
 5) Upload the `airport-codes_csv.csv` to `airport_data` folder;
