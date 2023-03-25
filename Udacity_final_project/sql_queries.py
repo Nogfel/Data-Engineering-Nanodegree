@@ -151,44 +151,53 @@ ORDER BY 1 ASC
 """)
 
 load_dim_port = ("""
-WITH treated_airport_stage AS (
+WITH raw_data_sac AS (
     SELECT
         iata_code,
+        ident,
         type,
         name,
         iso_country,
         municipality,
-        1.0 AS i94mode
+        1.0 AS i94mode,
+        row_number() OVER (PARTITION BY iata_code order by ident desc) = 1 AS row_number
     FROM staging_airport_codes sac
     WHERE name NOT LIKE '[Duplicate]%'
         AND iata_code <> '0'
+    GROUP BY iata_code, type, name, iso_country, municipality, ident
+), 
+port_no_duplicates AS (
+    SELECT
+        *
+    FROM raw_data_sac
+    WHERE row_number = 1
 )
 SELECT DISTINCT
     CAST(si.i94port AS VARCHAR) + '_' + CAST(si.i94mode AS VARCHAR) AS port_modal_id,
     si.i94port AS port_id,
     si.i94mode AS modal_id,
     CASE 
-        WHEN dm.modal = 'Air' AND tas.type IS NOT NULL THEN tas.type 
-        WHEN tas.type IS NULL THEN 'UNKNOWN'
+        WHEN dm.modal = 'Air' AND pnd.type IS NOT NULL THEN pnd.type 
+        WHEN pnd.type IS NULL THEN 'UNKNOWN'
         ELSE 'UNKNOWN'
     END AS port_type,
     CASE 
-        WHEN dm.modal = 'Air' AND tas.name IS NOT NULL THEN tas.name 
-        WHEN tas.name IS NULL THEN 'UNKNOWN'
+        WHEN dm.modal = 'Air' AND pnd.name IS NOT NULL THEN pnd.name 
+        WHEN pnd.name IS NULL THEN 'UNKNOWN'
         ELSE 'UNKNOWN'
     END AS port_name,
     CASE 
-        WHEN dm.modal = 'Air' AND tas.iso_country IS NOT NULL THEN tas.iso_country 
-        WHEN tas.iso_country IS NULL THEN 'UNKNOWN'
+        WHEN dm.modal = 'Air' AND pnd.iso_country IS NOT NULL THEN pnd.iso_country 
+        WHEN pnd.iso_country IS NULL THEN 'UNKNOWN'
         ELSE 'UNKNOWN'
     END AS port_country,
     CASE 
-        WHEN dm.modal = 'Air' AND tas.municipality IS NOT NULL THEN tas.municipality 
-        WHEN tas.municipality IS NULL THEN 'UNKNOWN'
+        WHEN dm.modal = 'Air' AND pnd.municipality IS NOT NULL THEN pnd.municipality 
+        WHEN pnd.municipality IS NULL THEN 'UNKNOWN'
         ELSE 'UNKNOWN'
     END AS port_city
 FROM staging_imigration si
-LEFT JOIN treated_airport_stage tas ON si.i94port = tas.iata_code AND si.i94mode = tas.i94mode
+LEFT JOIN port_no_duplicates pnd ON si.i94port = pnd.iata_code AND si.i94mode = pnd.i94mode
 LEFT JOIN dim_modal dm ON dm.id_modal = si.i94mode
 
 """)
