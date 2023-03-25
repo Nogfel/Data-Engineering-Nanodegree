@@ -17,7 +17,6 @@ CREATE TABLE staging_airport_codes (
 """)
 
 create_staging_imigration = ("""CREATE TABLE staging_imigration (
-    Unnamed_0 INTEGER, 
     cicid FLOAT, 
     i94yr FLOAT, 
     i94mon FLOAT, 
@@ -41,7 +40,7 @@ create_staging_imigration = ("""CREATE TABLE staging_imigration (
     biryear FLOAT, 
     dtaddto VARCHAR, 
     gender VARCHAR, 
-    insnum INTEGER,
+    insnum VARCHAR,
     airline VARCHAR, 
     admnum FLOAT, 
     fltno VARCHAR, 
@@ -105,16 +104,7 @@ CREATE TABLE fact_imigration (
     count INTEGER,
     flight_number VARCHAR
 )
-""")
-
-# LOAD STAGE TABLES
-load_staging_tables = ("""
-    COPY {} FROM '{}'
-    credentials 'aws_iam_role=arn:aws:iam::644393144861:role/imigrationRole'
-    region '{}'
-    delimiter '{}' EMPTYASNULL CSV NULL AS '\\0'
-    IGNOREHEADER 1;
-""")
+""")                      
                      
 # LOAD TABLES
 

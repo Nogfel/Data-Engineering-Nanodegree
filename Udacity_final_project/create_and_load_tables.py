@@ -18,25 +18,26 @@ REGION=config.get('S3', 'REGION')
 create_tables = [create_staging_airport_codes, create_staging_imigration, create_staging_sas_information, create_dim_country, create_dim_state, create_dim_modal, create_dim_visa_motive, create_dim_port, create_dim_imigrant, create_fact_imigration]
 
 # Parameters for importing the staging tables to Redshift
-staging_tables = [{
+staging_tables_csv = [{
                     'table_name':'staging_airport_codes',
-                    'origin_path':'s3://nogfel-imigration1/airport_data',
-                    'delimiter':','
-                },
-                {
-                    'table_name':'staging_imigration',
-                    'origin_path':'s3://nogfel-imigration1/imigration_data',
+                    'origin_path':'s3://nogfel-imigration/airport_data',
                     'delimiter':','
                 },
                 {
                     'table_name':'staging_sas_information',
-                    'origin_path':'s3://nogfel-imigration1/sas_data',
+                    'origin_path':'s3://nogfel-imigration/sas_data',
                     'delimiter':'|'
                 }]
 
+staging_table_parquet = {
+                    'table_name':'staging_imigration',
+                    'column_names':'"cicid", "i94yr", "i94mon", "i94cit", "i94res", "i94port", "arrdate", "i94mode", "i94addr", "depdate", "i94bir", "i94visa", "count", "dtadfile", "visapost", "occup", "entdepa", "entdepd", "entdepu", "matflag", "biryear", "dtaddto", "gender", "insnum","airline", "admnum", "fltno", "visatype"',
+                    'origin_path':'s3://nogfel-imigration/imigration_data',
+                }
+
 
 # SQL query statement to import data to Redshift
-sql_statement_staging = """
+sql_statement_staging_csv = """
 COPY {} FROM '{}'
 credentials 'aws_iam_role={}'
 region '{}'
@@ -44,6 +45,12 @@ delimiter '{}' EMPTYASNULL CSV NULL AS '\\0'
 IGNOREHEADER 1;
 """
 
+sql_statement_staging_parquet = """
+COPY {} ({}) FROM '{}'
+    credentials 'aws_iam_role={}'
+    FORMAT AS PARQUET;
+"""
+    
 # Parameters for formating dimension SQL queries
 dim_tables =[{
                 'table_name':'dim_country',
@@ -103,18 +110,35 @@ def main():
         cur.execute(query=query)
         
 
-    # # Loading staging tables
-    for table in staging_tables:
+    # Loading staging tables from .csv file
+    for table in staging_tables_csv:
         print('Truncating {} table'.format(table['table_name']))
         cur.execute('TRUNCATE TABLE {}'.format(table['table_name']))
 
-        print('Generating {} SQL query'.format(table['table_name']))
-        staging_query = sql_statement_staging.format(table['table_name'], table['origin_path'], ARN, REGION,table['delimiter'])
+        print('Generating {} SQL query from .csv file'.format(table['table_name']))
+        staging_query_csv = sql_statement_staging_csv.format(table['table_name'], table['origin_path'], ARN, REGION,table['delimiter'])
 
         print('Executing {} query'.format(table['table_name']))
-        cur.execute(query=staging_query)
+        cur.execute(query=staging_query_csv)
 
         print('`{}` loaded with success \n'.format(table['table_name']))
+
+    # Loadging staging table from parquet file
+    print('Truncating staging_imigration table')
+    cur.execute('TRUNCATE TABLE staging_imigration')
+
+    print('Generating staging_imigration SQL query from .parquet file')
+    staging_query_parquet = sql_statement_staging_parquet.format(
+        staging_table_parquet['table_name'], 
+        staging_table_parquet['column_names'], 
+        staging_table_parquet['origin_path'], 
+        ARN
+    )
+
+    print('Executing staging_imigration query')
+    cur.execute(query=staging_query_parquet)
+
+    print('`staging_imigration` loaded with success \n')
 
     # Loading dimension tables
     for table in dim_tables:

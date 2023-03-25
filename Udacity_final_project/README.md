@@ -1,8 +1,17 @@
 # Udacity's Capstone Project
 
 # <font color='red'>Still pending:
-- Adjust `dim_port` query. It did not pass the quality checks. Duplicates on "port_id" column. Check how many duplicates are from "small-airport" type and see if we can remove that. It might be a good idea to see if we can insert a column telling if this airport is closed.
-- Perform the import of the imigrant dataset from the parquet file instead of the .csv file.</font>
+Adjust `dim_port` query. For finishing the `dim_port` problem I need to retrieve the last value from `staging_airport`'s "iata_code" ordering by `ident` which does not repeat in the entire table. Keep working over this query below:<br>
+```sql
+select
+    iata_code,
+    ident,
+    LAST_VALUE(ident) OVER(PARTITION BY iata_code ORDER BY ident DESC) AS last_register
+from staging_airport_codes
+GROUP BY 1,2
+HAVING iata_code in ('DZI')
+```
+</font>
 
 ## Important Observation
 This project consists on a series of python scripts to be executed in a specific order, to be displayed, in order to generate a Data Warehouse in Redshift containing information on imigration to the US _(project suggested by Udacity)_.
