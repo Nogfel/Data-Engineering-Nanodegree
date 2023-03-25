@@ -75,6 +75,7 @@ create_dim_visa_motive = ("""CREATE TABLE dim_visa_motive (
 )""")
 
 create_dim_port = ("""CREATE TABLE dim_port (
+    port_modal_id VARCHAR,
     port_id VARCHAR,
     modal_id VARCHAR,
     port_type VARCHAR,
@@ -160,32 +161,46 @@ ORDER BY 1 ASC
 """)
 
 load_dim_port = ("""
+WITH treated_airport_stage AS (
+    SELECT
+        iata_code,
+        type,
+        name,
+        iso_country,
+        municipality,
+        1.0 AS i94mode
+    FROM staging_airport_codes sac
+    WHERE name NOT LIKE '[Duplicate]%'
+        AND iata_code <> '0'
+)
 SELECT DISTINCT
+    CAST(si.i94port AS VARCHAR) + '_' + CAST(si.i94mode AS VARCHAR) AS port_modal_id,
     si.i94port AS port_id,
     si.i94mode AS modal_id,
     CASE 
-        WHEN dm.modal = 'Air' AND sac.type IS NOT NULL THEN sac.type 
-        WHEN sac.type IS NULL THEN 'UNKNOWN'
+        WHEN dm.modal = 'Air' AND tas.type IS NOT NULL THEN tas.type 
+        WHEN tas.type IS NULL THEN 'UNKNOWN'
         ELSE 'UNKNOWN'
     END AS port_type,
     CASE 
-        WHEN dm.modal = 'Air' AND sac.name IS NOT NULL THEN sac.name 
-        WHEN sac.name IS NULL THEN 'UNKNOWN'
+        WHEN dm.modal = 'Air' AND tas.name IS NOT NULL THEN tas.name 
+        WHEN tas.name IS NULL THEN 'UNKNOWN'
         ELSE 'UNKNOWN'
     END AS port_name,
     CASE 
-        WHEN dm.modal = 'Air' AND sac.iso_country IS NOT NULL THEN sac.iso_country 
-        WHEN sac.iso_country IS NULL THEN 'UNKNOWN'
+        WHEN dm.modal = 'Air' AND tas.iso_country IS NOT NULL THEN tas.iso_country 
+        WHEN tas.iso_country IS NULL THEN 'UNKNOWN'
         ELSE 'UNKNOWN'
     END AS port_country,
     CASE 
-        WHEN dm.modal = 'Air' AND sac.municipality IS NOT NULL THEN sac.municipality 
-        WHEN sac.municipality IS NULL THEN 'UNKNOWN'
+        WHEN dm.modal = 'Air' AND tas.municipality IS NOT NULL THEN tas.municipality 
+        WHEN tas.municipality IS NULL THEN 'UNKNOWN'
         ELSE 'UNKNOWN'
     END AS port_city
 FROM staging_imigration si
-LEFT JOIN staging_airport_codes sac ON si.i94port = sac.iata_code
+LEFT JOIN treated_airport_stage tas ON si.i94port = tas.iata_code AND si.i94mode = tas.i94mode
 LEFT JOIN dim_modal dm ON dm.id_modal = si.i94mode
+
 """)
 
 load_dim_imigrant = ("""

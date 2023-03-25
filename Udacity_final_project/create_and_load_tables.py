@@ -20,17 +20,17 @@ create_tables = [create_staging_airport_codes, create_staging_imigration, create
 # Parameters for importing the staging tables to Redshift
 staging_tables = [{
                     'table_name':'staging_airport_codes',
-                    'origin_path':'s3://nogfel-imigration/airport_data',
+                    'origin_path':'s3://nogfel-imigration1/airport_data',
                     'delimiter':','
                 },
                 {
                     'table_name':'staging_imigration',
-                    'origin_path':'s3://nogfel-imigration/imigration_data',
+                    'origin_path':'s3://nogfel-imigration1/imigration_data',
                     'delimiter':','
                 },
                 {
                     'table_name':'staging_sas_information',
-                    'origin_path':'s3://nogfel-imigration/sas_data',
+                    'origin_path':'s3://nogfel-imigration1/sas_data',
                     'delimiter':'|'
                 }]
 
@@ -67,7 +67,7 @@ dim_tables =[{
             },
             {
                 'table_name':'dim_port',
-                'columns':'port_id, modal_id, port_type, port_name, port_country, port_city',
+                'columns':'port_modal_id, port_id, modal_id, port_type, port_name, port_country, port_city',
                 'query':load_dim_port
             },
             {

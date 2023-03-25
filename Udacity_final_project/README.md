@@ -1,5 +1,9 @@
 # Udacity's Capstone Project
 
+# <font color='red'>Still pending:
+- Adjust `dim_port` query. It did not pass the quality checks. Duplicates on "port_id" column. Check how many duplicates are from "small-airport" type and see if we can remove that. It might be a good idea to see if we can insert a column telling if this airport is closed.
+- Perform the import of the imigrant dataset from the parquet file instead of the .csv file.</font>
+
 ## Important Observation
 This project consists on a series of python scripts to be executed in a specific order, to be displayed, in order to generate a Data Warehouse in Redshift containing information on imigration to the US _(project suggested by Udacity)_.
 
@@ -20,6 +24,7 @@ Since all the data in `I94_SAS_Labels_Descriptions.SAS` are formatted in a parti
 6) Upload the `immigration_data_sample.csv` to `imigration_data` folder;
 6) Upload the `sas_descriptive_information.csv` to `sas_data` folder;
 7) Execute `create_and_load_tables.py` file. _Creates and loads the tables necessary for the analysis._
+8) Execute `quality_checks.py` file. _Checks if there are problems with the table's keys._
 
 ## Staging Tables Exploration for Necessary Data Wrangling
 
