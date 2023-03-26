@@ -1,5 +1,7 @@
 import csv
 
+print('Generating `sas_descriptive_inforation.csv` file...')
+
 with open('I94_SAS_Labels_Descriptions.SAS') as file:
     f_content = file.read()
     f_content.replace('\t', '')
@@ -33,3 +35,5 @@ with open('sas_descriptive_information.csv', 'w', newline='') as f:
     for key_table, dicts in all_raw_data_dicts.items():
         for key, value in dicts.items():
             f.write('"{0}"|"{1}"|"{2}"\n'.format(key, value, key_table))
+
+print('File `sas_descriptive_inforation.csv` generated with success.')
