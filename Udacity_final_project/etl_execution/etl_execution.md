@@ -2,6 +2,7 @@
 
 ## `reading_sas_file.py`
 File execution and it's output:
+
 ![alt text](generating_sas_csv_file.png "Tables Schema")
 
 ## `create_cluster_aws.py`
