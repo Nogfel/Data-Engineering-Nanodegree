@@ -1,5 +1,8 @@
 # Udacity's Capstone Project
 
+<font color='red'>It seems that I did not dowloaded all partitions of the parquet file. I have 9 parts here, but it seems to be 13 of them.<br>
+I will have to remake the `dim_port` table. There is no way of knowing from which airport in a city the person is arriving at. So I do not need the airport table (take it off). In case I face some problems because of this, I doubt it because in the rubric is told we have to use a minimum of two datasources with at least two different formats (I am using .csv and parquet), I can get the datasource about us-demographics.</font>
+
 ## Important Observation
 This project consists on a series of python scripts to be executed in a specific order, to be displayed, in order to generate a Data Warehouse in Redshift containing information on imigration to the US _(project suggested by Udacity)_.
 
