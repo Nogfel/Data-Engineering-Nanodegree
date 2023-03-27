@@ -15,15 +15,10 @@ ARN=config.get('IAM_ROLE', 'ARN')
 REGION=config.get('S3', 'REGION')
 
 # Tables to be created
-create_tables = [create_staging_airport_codes, create_staging_imigration, create_staging_sas_information, create_dim_country, create_dim_state, create_dim_modal, create_dim_visa_motive, create_dim_port, create_dim_imigrant, create_fact_imigration]
+create_tables = [create_staging_imigration, create_staging_sas_information, create_dim_country, create_dim_state, create_dim_modal, create_dim_visa_motive, create_dim_port, create_dim_imigrant, create_fact_imigration]
 
 # Parameters for importing the staging tables to Redshift
 staging_tables_csv = [{
-                    'table_name':'staging_airport_codes',
-                    'origin_path':'s3://nogfel-imigration/airport_data',
-                    'delimiter':','
-                },
-                {
                     'table_name':'staging_sas_information',
                     'origin_path':'s3://nogfel-imigration/sas_data',
                     'delimiter':'|'
@@ -74,7 +69,7 @@ dim_tables =[{
             },
             {
                 'table_name':'dim_port',
-                'columns':'port_modal_id, port_id, modal_id, port_type, port_name, port_country, port_city',
+                'columns':'port_modal_id, port_id, modal_id, location_city, location_state_id',
                 'query':load_dim_port
             },
             {
@@ -86,7 +81,7 @@ dim_tables =[{
 # Parameters for formating the fact SQL query
 fact_tables =[{
                 'table_name':'fact_imigration',
-                'columns':'imigrant_id, id_port_arrival_us, count, flight_number',
+                'columns':'port_modal_id, imigrant_id, id_port_arrival_us, id_modal, count, flight_number',
                 'query':load_fact_imigration
             }]
 

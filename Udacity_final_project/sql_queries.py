@@ -1,20 +1,4 @@
 # CREATE TABLES
-create_staging_airport_codes = ("""
-CREATE TABLE staging_airport_codes (
-    ident VARCHAR, 
-    type VARCHAR, 
-    name VARCHAR, 
-    elevation_ft VARCHAR, 
-    continent VARCHAR, 
-    iso_country VARCHAR,
-    iso_region VARCHAR, 
-    municipality VARCHAR, 
-    gps_code VARCHAR, 
-    iata_code VARCHAR, 
-    local_code VARCHAR,
-    coordinates VARCHAR
-)
-""")
 
 create_staging_imigration = ("""CREATE TABLE staging_imigration (
     cicid FLOAT, 
@@ -77,10 +61,8 @@ create_dim_port = ("""CREATE TABLE dim_port (
     port_modal_id VARCHAR,
     port_id VARCHAR,
     modal_id VARCHAR,
-    port_type VARCHAR,
-    port_name VARCHAR,
-    port_country VARCHAR,
-    port_city VARCHAR
+    location_city VARCHAR,
+    location_state_id VARCHAR
 )""")
 
 create_dim_imigrant = ("""CREATE TABLE dim_imigrant(
@@ -99,8 +81,10 @@ create_dim_imigrant = ("""CREATE TABLE dim_imigrant(
 create_fact_imigration = ("""
 CREATE TABLE fact_imigration (
     id INT IDENTITY(1,1),
+    port_modal_id VARCHAR,
     imigrant_id VARCHAR,
     id_port_arrival_us  VARCHAR,
+    id_modal VARCHAR,
     count INTEGER,
     flight_number VARCHAR
 )
@@ -151,55 +135,14 @@ ORDER BY 1 ASC
 """)
 
 load_dim_port = ("""
-WITH raw_data_sac AS (
-    SELECT
-        iata_code,
-        ident,
-        type,
-        name,
-        iso_country,
-        municipality,
-        1.0 AS i94mode,
-        row_number() OVER (PARTITION BY iata_code order by ident desc) = 1 AS row_number
-    FROM staging_airport_codes sac
-    WHERE name NOT LIKE '[Duplicate]%'
-        AND iata_code <> '0'
-    GROUP BY iata_code, type, name, iso_country, municipality, ident
-), 
-port_no_duplicates AS (
-    SELECT
-        *
-    FROM raw_data_sac
-    WHERE row_number = 1
-)
 SELECT DISTINCT
     CAST(si.i94port AS VARCHAR) + '_' + CAST(si.i94mode AS VARCHAR) AS port_modal_id,
     si.i94port AS port_id,
     si.i94mode AS modal_id,
-    CASE 
-        WHEN dm.modal = 'Air' AND pnd.type IS NOT NULL THEN pnd.type 
-        WHEN pnd.type IS NULL THEN 'UNKNOWN'
-        ELSE 'UNKNOWN'
-    END AS port_type,
-    CASE 
-        WHEN dm.modal = 'Air' AND pnd.name IS NOT NULL THEN pnd.name 
-        WHEN pnd.name IS NULL THEN 'UNKNOWN'
-        ELSE 'UNKNOWN'
-    END AS port_name,
-    CASE 
-        WHEN dm.modal = 'Air' AND pnd.iso_country IS NOT NULL THEN pnd.iso_country 
-        WHEN pnd.iso_country IS NULL THEN 'UNKNOWN'
-        ELSE 'UNKNOWN'
-    END AS port_country,
-    CASE 
-        WHEN dm.modal = 'Air' AND pnd.municipality IS NOT NULL THEN pnd.municipality 
-        WHEN pnd.municipality IS NULL THEN 'UNKNOWN'
-        ELSE 'UNKNOWN'
-    END AS port_city
+    SPLIT_PART(sas.description, ',', 1) AS location_city,
+    SPLIT_PART(sas.description, ',', 2) AS location_state_id
 FROM staging_imigration si
-LEFT JOIN port_no_duplicates pnd ON si.i94port = pnd.iata_code AND si.i94mode = pnd.i94mode
-LEFT JOIN dim_modal dm ON dm.id_modal = si.i94mode
-
+LEFT JOIN staging_sas_information sas ON si.i94port = sas.id AND column_name = 'i94port'
 """)
 
 load_dim_imigrant = ("""
@@ -228,9 +171,11 @@ load_dim_imigrant = ("""
 
 load_fact_imigration = ("""
 SELECT
+    CAST(i94port AS VARCHAR) + '_' + CAST(i94mode AS VARCHAR) AS port_modal_id,    
     cicid AS imigrant_id,
     i94port AS id_port_arrival_us,
-    count,
+    i94mode AS id_modal,
+    CAST(count AS INTEGER) AS count,
     fltno AS flight_number
 FROM staging_imigration
 """)
