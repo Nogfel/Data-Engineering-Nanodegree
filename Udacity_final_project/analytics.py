@@ -1,22 +1,9 @@
-checks = ("""
-            SELECT
-                {id},
-                COUNT({id})
-            FROM {table}
-            GROUP BY 1
-            ORDER BY 2 DESC
-""")
-          
-table_to_check = {
-    "dim_country":"id",
-    "dim_state":"id",
-    "dim_modal":"id_modal",
-    "dim_visa_motive":"visa_motive_id",
-    "dim_port":"port_modal_id",
-    "dim_imigrant":"imigrant_id",
-    "fact_imigration":"id"
+from sql_queries import *
 
-}
+question_queries = {"How many people imigrated to US in April 2016":total_imigration,
+                    "Which modal is the most common used for going to US?":imigrant_modal_transp,
+                    "What is the most common visa type for aerial arrivals?":visa_type_aerial,
+                    "Which is the most common place where people arrive using aerial modal and comes for pleasure?":arrival_aerials_pleasure}
 
 def connect_redshift():
     import psycopg2
@@ -37,27 +24,20 @@ def connect_redshift():
 
     return cur
 
-def run_checks(cur, query, table, id):
+def run_analysis(cur, query):
     cur.execute(query)
     response = cur.fetchall()
 
     for item in response:
-        duplicates = item[1]
-        break
-
-    if duplicates == 1:
-        print('Table {table} has no duplicates on primary key column ({id}).'.format(table=table, id=id))
-    else:
-        raise KeyError("There are duplicates values on primary key {id} column for {table} table".format(id=id, table=table))
+        print(item)
 
 
 def main():
-    for table, id in table_to_check.items():
-        run_checks(
+    for question, query in question_queries.items():
+        print(question)
+        run_analysis(
             cur=connect_redshift(),
-            query=checks.format(id=id, table=table),
-            table=table,
-            id=id
+            query=query
         )
 
 if __name__ == "__main__":

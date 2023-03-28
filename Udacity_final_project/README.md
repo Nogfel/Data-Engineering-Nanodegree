@@ -26,18 +26,14 @@ _Creates the necessary infracstructure on AWS Cloud_;
 2) Execute `reading_sas_file` file. <br>
 _Exports all the necessary id and values from the SAS file as `sas_descriptive_information` file. Important to notice that this file was placed inside the data folder, which is where we want the .csv file to be stored_;
 3) Create a S3 bucket, named as `nogfel-imigration`, in the same region where the redshift cluster was created _(us-west-2)_;
-4) Create folders named as `airport_data`, `imigration_data` and `sas_data` on the root of `nogfel-imigration`;
-5) Upload the `airport-codes_csv.csv` to `airport_data` folder;
-6) Upload the content of the parquet file folder to `imigration_data` folder;
+4) Create folders named as `imigration_data` and `sas_data` on the root of `nogfel-imigration`;
+5) Upload the content of the parquet file folder to `imigration_data` folder;
 6) Upload the `sas_descriptive_information.csv` to `sas_data` folder;
 7) Execute `create_and_load_tables.py` file. _Creates and loads the tables necessary for the analysis._
 8) Execute `quality_checks.py` file. _Checks if there are problems with the table's keys._
+9) Execute the `analytics.py` file. _Perform some analysis over the data._
 
 ## Staging Tables Exploration for Necessary Data Wrangling
-
-### `staging_airport_codes`
-Table generated from `airport-code_csv.csv` table. 
-This table presented itself with a little challenge because redshift was reading the comma inside the double quote as a delimiter. So, it understood that this table had one more column than it actually did. To fix this problem I used the strategy used in this [StackOverflow post](https://stackoverflow.com/questions/47290137/redshift-loading-csv-with-commas-in-a-text-field). This strategy was used in all 3 staging tables.
 
 ### `staging_imigration`
 Table generated from the imigrant information available in `immigration_data_sample.csv`/parquet files.

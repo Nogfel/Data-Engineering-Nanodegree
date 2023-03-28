@@ -179,3 +179,52 @@ SELECT
     fltno AS flight_number
 FROM staging_imigration
 """)
+
+# ANALYTIC QUERIES
+
+# Total of imigrants in April 2016
+total_imigration = ("""
+SELECT
+    SUM(count) AS total_imigrants
+FROM fact_imigration
+""")
+
+# Imigrations by transport modal
+imigrant_modal_transp = ("""
+SELECT
+    dm.modal,
+    COUNT(fi.count) AS count_modal_arrivals
+FROM fact_imigration fi
+LEFT JOIN dim_port dp ON fi.port_modal_id = dp.port_modal_id
+LEFT JOIN dim_modal dm ON dm.id_modal = dp.modal_id
+GROUP BY 1
+ORDER BY 2 DESC
+""")
+
+# What is the most common visa type for aerial arrivals
+visa_type_aerial = ("""
+SELECT
+    dvm.motive,
+    SUM(count) AS most_comom_visa_motive
+FROM fact_imigration fi
+LEFT JOIN dim_imigrant di ON di.imigrant_id = fi.imigrant_id
+LEFT JOIN dim_visa_motive dvm ON dvm.visa_motive_id = di.visa_motive_id
+WHERE fi.id_modal = 1
+GROUP BY 1
+ORDER BY 2 DESC
+""")
+
+# Which is the most common place where people arrive using aerial modal and comes for pleasure?
+arrival_aerials_pleasure = ("""
+SELECT
+    dp.location_city,
+    SUM(count) AS most_comom_arrivals_pleasure
+FROM fact_imigration fi
+LEFT JOIN dim_imigrant di ON di.imigrant_id = fi.imigrant_id
+LEFT JOIN dim_visa_motive dvm ON dvm.visa_motive_id = di.visa_motive_id
+LEFT JOIN dim_port dp ON dp.port_modal_id = fi.port_modal_id
+WHERE fi.id_modal = 1
+    AND dvm.motive = 'Pleasure'
+GROUP BY 1
+ORDER BY 2 DESC LIMIT 5
+""")
