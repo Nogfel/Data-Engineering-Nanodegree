@@ -1,4 +1,4 @@
-# Data Warehouse Creation on S3
+# Data Warehouse Creation on Redshift
 This project consists on creating a Data Warehouse on Amazon Redshift based on metadata collected on songs log files data. In order to do that a Redshift Cluster is created using Python SDK and the data is ingested and prepared using Python and SQL. The data used in this project is collected from a JSON file and stored in a stage table. From there, we insert the data into a star schema composed of fact and dimension tables. At the end, the data inserted will be queryed to show that all the steps were executed successfully.
 
 ## Creating AWS resources
